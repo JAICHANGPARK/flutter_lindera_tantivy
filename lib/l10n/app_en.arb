@@ -117,5 +117,93 @@
   },
   "noDocumentsToAdd": "No documents to add",
   "webPlatformNotSupported": "Web Platform Not Supported",
-  "webPlatformMessage": "This app uses Rust FFI and is not supported on web platforms.\nPlease use the macOS, Windows, Linux, iOS, or Android app."
+  "webPlatformMessage": "This app uses Rust FFI and is not supported on web platforms.\nPlease use the macOS, Windows, Linux, iOS, or Android app.",
+  "performanceBenchmark": "Performance Benchmark",
+  "benchmarkSettings": "Benchmark Settings",
+  "testLanguage": "Test Language",
+  "documentCountLabel": "Document Count: {count}",
+  "@documentCountLabel": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "runBenchmark": "Run Benchmark",
+  "running": "Running...",
+  "benchmarkPreparing": "Preparing benchmark...",
+  "deletingExisting": "Deleting existing documents...",
+  "indexingStart": "Starting to index {count} documents...",
+  "@indexingStart": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "indexingProgress": "Indexing: {current}/{total} ({percent}%)",
+  "@indexingProgress": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "indexingComplete": "Indexing complete: {time}ms ({perDoc}ms/doc)",
+  "@indexingComplete": {
+    "placeholders": {
+      "time": {
+        "type": "int"
+      },
+      "perDoc": {
+        "type": "String"
+      }
+    }
+  },
+  "searchPerformanceTest": "Starting search performance test...",
+  "searchingQuery": "Searching: \"{query}\" ({current}/{total})",
+  "@searchingQuery": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      },
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "completed": "Completed!",
+  "waitMessage": "Please wait. UI may be temporarily slow.",
+  "benchmarkResults": "Benchmark Results",
+  "totalIndexingTime": "Total Indexing Time",
+  "avgIndexingTimePerDoc": "Avg. Indexing Time per Doc",
+  "searchQueryCount": "Search Query Count",
+  "totalSearchTime": "Total Search Time",
+  "avgSearchTime": "Avg. Search Time",
+  "totalSearchResults": "Total Search Results",
+  "individualSearchTimes": "Individual Search Times",
+  "benchmarkSummary": "On average, {count} documents can be searched in {time}ms.",
+  "@benchmarkSummary": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "changeTheme": "Change Theme",
+  "lightMode": "Light Mode",
+  "darkMode": "Dark Mode",
+  "systemSettings": "System Settings"
 }
