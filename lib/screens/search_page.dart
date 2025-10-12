@@ -1,15 +1,15 @@
+import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:tantivy_flutter_app/l10n/app_localizations.dart';
-import 'package:tantivy_flutter_app/models/document_data.dart';
 import 'package:tantivy_flutter_app/services/document_loader_service.dart';
 import 'package:tantivy_flutter_app/src/rust/api/search.dart';
 import 'package:tantivy_flutter_app/widgets/language_selector.dart';
 import 'package:tantivy_flutter_app/widgets/search_result_card.dart';
 import 'package:tantivy_flutter_app/widgets/dialogs/add_document_dialog.dart';
 import 'package:tantivy_flutter_app/widgets/theme_selector.dart';
+import 'package:tantivy_flutter_app/widgets/web_platform_unsupported.dart';
 
 class SearchPage extends ConsumerStatefulWidget {
   const SearchPage({super.key});
@@ -311,6 +311,11 @@ class _SearchPageState extends ConsumerState<SearchPage> {
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
 
+    // 웹 플랫폼 감지 및 안내 메시지 표시
+    if (kIsWeb) {
+      return const WebPlatformUnsupported();
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text('🔍 ${l10n.appTitle}'),
@@ -481,7 +486,9 @@ class _SearchPageState extends ConsumerState<SearchPage> {
                         style: TextStyle(
                           color: _isLoading
                               ? Theme.of(context).colorScheme.onPrimaryContainer
-                              : Theme.of(context).colorScheme.onSecondaryContainer,
+                              : Theme.of(
+                                  context,
+                                ).colorScheme.onSecondaryContainer,
                         ),
                       ),
                     ),
@@ -502,10 +509,9 @@ class _SearchPageState extends ConsumerState<SearchPage> {
                         Icon(
                           Icons.search_off,
                           size: 64,
-                          color: Theme.of(context)
-                              .colorScheme
-                              .onSurface
-                              .withOpacity(0.3),
+                          color: Theme.of(
+                            context,
+                          ).colorScheme.onSurface.withOpacity(0.3),
                         ),
                         const SizedBox(height: 16),
                         Text(
@@ -513,10 +519,9 @@ class _SearchPageState extends ConsumerState<SearchPage> {
                               ? l10n.noResults
                               : l10n.indexInitializing,
                           style: TextStyle(
-                            color: Theme.of(context)
-                                .colorScheme
-                                .onSurface
-                                .withOpacity(0.6),
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.onSurface.withOpacity(0.6),
                             fontSize: 16,
                           ),
                         ),
