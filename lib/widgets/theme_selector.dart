@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:tantivy_flutter_app/providers/theme_provider.dart';
+import 'package:tantivy_flutter_app/l10n/app_localizations.dart';
 
 class ThemeSelector extends ConsumerWidget {
   const ThemeSelector({super.key});
@@ -8,10 +9,11 @@ class ThemeSelector extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentTheme = ref.watch(appThemeModeProvider);
+    final l10n = AppLocalizations.of(context)!;
 
     return PopupMenuButton<ThemeModeOption>(
       icon: Icon(_getThemeIcon(currentTheme)),
-      tooltip: '테마 변경',
+      tooltip: l10n.changeTheme,
       onSelected: (ThemeModeOption mode) {
         ref.read(appThemeModeProvider.notifier).setThemeMode(mode);
       },
@@ -28,7 +30,7 @@ class ThemeSelector extends ConsumerWidget {
               ),
               const SizedBox(width: 8),
               Text(
-                '라이트 모드',
+                l10n.lightMode,
                 style: TextStyle(
                   fontWeight: currentTheme == ThemeModeOption.light
                       ? FontWeight.bold
@@ -50,7 +52,7 @@ class ThemeSelector extends ConsumerWidget {
               ),
               const SizedBox(width: 8),
               Text(
-                '다크 모드',
+                l10n.darkMode,
                 style: TextStyle(
                   fontWeight: currentTheme == ThemeModeOption.dark
                       ? FontWeight.bold
@@ -72,7 +74,7 @@ class ThemeSelector extends ConsumerWidget {
               ),
               const SizedBox(width: 8),
               Text(
-                '시스템 설정',
+                l10n.systemSettings,
                 style: TextStyle(
                   fontWeight: currentTheme == ThemeModeOption.system
                       ? FontWeight.bold
