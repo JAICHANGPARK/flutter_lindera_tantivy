@@ -5,10 +5,7 @@ import 'package:tantivy_flutter_app/src/rust/api/search.dart';
 class AddDocumentDialog extends StatefulWidget {
   final VoidCallback onDocumentAdded;
 
-  const AddDocumentDialog({
-    super.key,
-    required this.onDocumentAdded,
-  });
+  const AddDocumentDialog({super.key, required this.onDocumentAdded});
 
   @override
   State<AddDocumentDialog> createState() => _AddDocumentDialogState();
@@ -95,9 +92,9 @@ class _AddDocumentDialogState extends State<AddDocumentDialog> {
               if (mounted) {
                 Navigator.pop(context);
                 widget.onDocumentAdded();
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text(result)),
-                );
+                ScaffoldMessenger.of(
+                  context,
+                ).showSnackBar(SnackBar(content: Text(result)));
               }
             } catch (e) {
               if (mounted) {
