@@ -385,7 +385,7 @@ class _SearchPageState extends ConsumerState<SearchPage> {
                     ),
                     const SizedBox(width: 8),
                     Text(
-                      '성능 벤치마크',
+                      l10n.performanceBenchmark,
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.secondary,
                       ),
