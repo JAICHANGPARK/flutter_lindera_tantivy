@@ -117,5 +117,93 @@
   },
   "noDocumentsToAdd": "没有要添加的文档",
   "webPlatformNotSupported": "不支持Web平台",
-  "webPlatformMessage": "此应用使用Rust FFI，不支持Web平台。\n请使用macOS、Windows、Linux、iOS或Android应用。"
+  "webPlatformMessage": "此应用使用Rust FFI，不支持Web平台。\n请使用macOS、Windows、Linux、iOS或Android应用。",
+  "performanceBenchmark": "性能基准测试",
+  "benchmarkSettings": "基准测试设置",
+  "testLanguage": "测试语言",
+  "documentCountLabel": "文档数量: {count}",
+  "@documentCountLabel": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "runBenchmark": "运行基准测试",
+  "running": "运行中...",
+  "benchmarkPreparing": "准备基准测试...",
+  "deletingExisting": "正在删除现有文档...",
+  "indexingStart": "开始索引{count}个文档...",
+  "@indexingStart": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "indexingProgress": "索引中: {current}/{total} ({percent}%)",
+  "@indexingProgress": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "indexingComplete": "索引完成: {time}ms ({perDoc}ms/文档)",
+  "@indexingComplete": {
+    "placeholders": {
+      "time": {
+        "type": "int"
+      },
+      "perDoc": {
+        "type": "String"
+      }
+    }
+  },
+  "searchPerformanceTest": "开始搜索性能测试...",
+  "searchingQuery": "搜索中: \"{query}\" ({current}/{total})",
+  "@searchingQuery": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      },
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "completed": "完成！",
+  "waitMessage": "请稍候。UI可能会暂时变慢。",
+  "benchmarkResults": "基准测试结果",
+  "totalIndexingTime": "总索引时间",
+  "avgIndexingTimePerDoc": "每个文档的平均索引时间",
+  "searchQueryCount": "搜索查询数",
+  "totalSearchTime": "总搜索时间",
+  "avgSearchTime": "平均搜索时间",
+  "totalSearchResults": "总搜索结果",
+  "individualSearchTimes": "单个搜索时间详情",
+  "benchmarkSummary": "平均可以在{time}ms内搜索{count}个文档。",
+  "@benchmarkSummary": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "changeTheme": "更改主题",
+  "lightMode": "浅色模式",
+  "darkMode": "深色模式",
+  "systemSettings": "系统设置"
 }
