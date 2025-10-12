@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:tantivy_flutter_app/l10n/app_localizations.dart';
+import 'package:tantivy_flutter_app/screens/benchmark_page.dart';
 import 'package:tantivy_flutter_app/services/document_loader_service.dart';
 import 'package:tantivy_flutter_app/src/rust/api/search.dart';
 import 'package:tantivy_flutter_app/widgets/language_selector.dart';
@@ -333,6 +334,13 @@ class _SearchPageState extends ConsumerState<SearchPage> {
                 case 'load_json':
                   _loadDocumentsFromJson();
                   break;
+                case 'benchmark':
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const BenchmarkPage(),
+                    ),
+                  );
+                  break;
                 case 'clear':
                   _clearAllDocuments();
                   break;
@@ -362,6 +370,24 @@ class _SearchPageState extends ConsumerState<SearchPage> {
                       l10n.loadFromJson,
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.tertiary,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              PopupMenuItem(
+                value: 'benchmark',
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.speed,
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
+                    const SizedBox(width: 8),
+                    Text(
+                      '성능 벤치마크',
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.secondary,
                       ),
                     ),
                   ],
