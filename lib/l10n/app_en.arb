@@ -115,5 +115,7 @@
       }
     }
   },
-  "noDocumentsToAdd": "No documents to add"
+  "noDocumentsToAdd": "No documents to add",
+  "webPlatformNotSupported": "Web Platform Not Supported",
+  "webPlatformMessage": "This app uses Rust FFI and is not supported on web platforms.\nPlease use the macOS, Windows, Linux, iOS, or Android app."
 }
