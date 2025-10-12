@@ -259,4 +259,16 @@ class AppLocalizationsZh extends AppLocalizations {
   String benchmarkSummary(int count, String time) {
     return '平均可以在${time}ms内搜索$count个文档。';
   }
+
+  @override
+  String get changeTheme => '更改主题';
+
+  @override
+  String get lightMode => '浅色模式';
+
+  @override
+  String get darkMode => '深色模式';
+
+  @override
+  String get systemSettings => '系统设置';
 }
