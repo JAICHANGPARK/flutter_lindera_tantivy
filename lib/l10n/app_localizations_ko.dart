@@ -168,4 +168,11 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get noDocumentsToAdd => '추가할 문서가 없습니다';
+
+  @override
+  String get webPlatformNotSupported => '웹 플랫폼 미지원';
+
+  @override
+  String get webPlatformMessage =>
+      '이 앱은 Rust FFI를 사용하므로 웹 플랫폼에서는 지원되지 않습니다.\nmacOS, Windows, Linux, iOS, Android 앱을 사용해주세요.';
 }
