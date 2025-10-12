@@ -1,0 +1,119 @@
+{
+  "appTitle": "検索システム",
+  "searchHint": "検索キーワードを入力してください (例: 仁川、空港、日本)",
+  "search": "検索",
+  "searchResults": "検索結果: {count}件",
+  "@searchResults": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noResults": "検索結果がありません",
+  "indexInitializing": "インデックスを初期化中...",
+  "indexReady": "準備完了！検索キーワードを入力してください。",
+  "searching": "検索中...",
+  "documentCount": "文書: {count}件",
+  "@documentCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "addDocument": "文書を追加",
+  "addMultipleDocuments": "複数の文書を追加",
+  "loadFromJson": "JSONファイルから読み込む",
+  "deleteAll": "すべて削除",
+  "title": "タイトル",
+  "content": "内容",
+  "cancel": "キャンセル",
+  "add": "追加",
+  "edit": "編集",
+  "delete": "削除",
+  "titleRequired": "タイトルを入力してください",
+  "contentRequired": "内容を入力してください",
+  "titleAndContentRequired": "タイトルと内容を入力してください",
+  "enterTitle": "文書のタイトルを入力してください",
+  "enterContent": "文書の内容を入力してください",
+  "metadata": "メタデータ",
+  "metadataJson": "メタデータ (JSON)",
+  "autoGenerateUuid": "UUIDは自動的に生成されます",
+  "editDocument": "文書を編集",
+  "deleteDocument": "文書を削除",
+  "deleteConfirm": "文書ID \"{id}\"を削除してもよろしいですか？",
+  "@deleteConfirm": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteAllWarning": "すべての文書を削除してもよろしいですか？\nこの操作は元に戻せません。",
+  "warning": "⚠️ 警告",
+  "allDocumentsDeleted": "すべての文書が削除されました。",
+  "enterSearchTerm": "検索キーワードを入力してください。",
+  "initializingIndex": "検索インデックスを初期化中...",
+  "initFailed": "初期化に失敗しました: {error}",
+  "@initFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "searchFailed": "検索に失敗しました: {error}",
+  "@searchFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "addFailed": "追加に失敗しました: {error}",
+  "@addFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "updateFailed": "更新に失敗しました: {error}",
+  "@updateFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteFailed": "削除に失敗しました: {error}",
+  "@deleteFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "loadingFromJson": "JSONファイルから文書を読み込み中...",
+  "jsonLoadFailed": "JSONの読み込みに失敗しました: {error}",
+  "@jsonLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "bulkAddTitle": "複数の文書を追加",
+  "bulkAddFormat": "形式: タイトル|内容|メタデータ (改行で区切る)",
+  "documentList": "文書リスト",
+  "invalidFormat": "無効な形式: {line}",
+  "@invalidFormat": {
+    "placeholders": {
+      "line": {
+        "type": "String"
+      }
+    }
+  },
+  "noDocumentsToAdd": "追加する文書がありません"
+}
