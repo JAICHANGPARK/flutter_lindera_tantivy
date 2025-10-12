@@ -541,6 +541,30 @@ abstract class AppLocalizations {
   /// In ko, this message translates to:
   /// **'평균적으로 {count}개의 문서를 {time}ms에 검색할 수 있습니다.'**
   String benchmarkSummary(int count, String time);
+
+  /// No description provided for @changeTheme.
+  ///
+  /// In ko, this message translates to:
+  /// **'테마 변경'**
+  String get changeTheme;
+
+  /// No description provided for @lightMode.
+  ///
+  /// In ko, this message translates to:
+  /// **'라이트 모드'**
+  String get lightMode;
+
+  /// No description provided for @darkMode.
+  ///
+  /// In ko, this message translates to:
+  /// **'다크 모드'**
+  String get darkMode;
+
+  /// No description provided for @systemSettings.
+  ///
+  /// In ko, this message translates to:
+  /// **'시스템 설정'**
+  String get systemSettings;
 }
 
 class _AppLocalizationsDelegate
