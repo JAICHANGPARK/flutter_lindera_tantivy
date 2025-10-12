@@ -117,5 +117,93 @@
   },
   "noDocumentsToAdd": "추가할 문서가 없습니다",
   "webPlatformNotSupported": "웹 플랫폼 미지원",
-  "webPlatformMessage": "이 앱은 Rust FFI를 사용하므로 웹 플랫폼에서는 지원되지 않습니다.\nmacOS, Windows, Linux, iOS, Android 앱을 사용해주세요."
+  "webPlatformMessage": "이 앱은 Rust FFI를 사용하므로 웹 플랫폼에서는 지원되지 않습니다.\nmacOS, Windows, Linux, iOS, Android 앱을 사용해주세요.",
+  "performanceBenchmark": "성능 벤치마크",
+  "benchmarkSettings": "벤치마크 설정",
+  "testLanguage": "테스트 언어",
+  "documentCountLabel": "문서 개수: {count}",
+  "@documentCountLabel": {
+    "placeholders": {
+      "count": {
+        "type": "String"
+      }
+    }
+  },
+  "runBenchmark": "벤치마크 실행",
+  "running": "실행 중...",
+  "benchmarkPreparing": "벤치마크 준비 중...",
+  "deletingExisting": "기존 문서 삭제 중...",
+  "indexingStart": "{count}개 문서 인덱싱 시작...",
+  "@indexingStart": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "indexingProgress": "인덱싱 중: {current}/{total} ({percent}%)",
+  "@indexingProgress": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      },
+      "percent": {
+        "type": "String"
+      }
+    }
+  },
+  "indexingComplete": "인덱싱 완료: {time}ms ({perDoc}ms/문서)",
+  "@indexingComplete": {
+    "placeholders": {
+      "time": {
+        "type": "int"
+      },
+      "perDoc": {
+        "type": "String"
+      }
+    }
+  },
+  "searchPerformanceTest": "검색 성능 테스트 시작...",
+  "searchingQuery": "검색 중: \"{query}\" ({current}/{total})",
+  "@searchingQuery": {
+    "placeholders": {
+      "query": {
+        "type": "String"
+      },
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "completed": "완료!",
+  "waitMessage": "잠시만 기다려주세요. UI가 일시적으로 느려질 수 있습니다.",
+  "benchmarkResults": "벤치마크 결과",
+  "totalIndexingTime": "총 인덱싱 시간",
+  "avgIndexingTimePerDoc": "문서당 평균 인덱싱 시간",
+  "searchQueryCount": "검색 쿼리 수",
+  "totalSearchTime": "총 검색 시간",
+  "avgSearchTime": "평균 검색 시간",
+  "totalSearchResults": "총 검색 결과",
+  "individualSearchTimes": "개별 검색 시간 상세",
+  "benchmarkSummary": "평균적으로 {count}개의 문서를 {time}ms에 검색할 수 있습니다.",
+  "@benchmarkSummary": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "changeTheme": "테마 변경",
+  "lightMode": "라이트 모드",
+  "darkMode": "다크 모드",
+  "systemSettings": "시스템 설정"
 }
