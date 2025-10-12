@@ -115,5 +115,7 @@
       }
     }
   },
-  "noDocumentsToAdd": "没有要添加的文档"
+  "noDocumentsToAdd": "没有要添加的文档",
+  "webPlatformNotSupported": "不支持Web平台",
+  "webPlatformMessage": "此应用使用Rust FFI，不支持Web平台。\n请使用macOS、Windows、Linux、iOS或Android应用。"
 }
