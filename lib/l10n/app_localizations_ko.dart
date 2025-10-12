@@ -175,4 +175,88 @@ class AppLocalizationsKo extends AppLocalizations {
   @override
   String get webPlatformMessage =>
       '이 앱은 Rust FFI를 사용하므로 웹 플랫폼에서는 지원되지 않습니다.\nmacOS, Windows, Linux, iOS, Android 앱을 사용해주세요.';
+
+  @override
+  String get performanceBenchmark => '성능 벤치마크';
+
+  @override
+  String get benchmarkSettings => '벤치마크 설정';
+
+  @override
+  String get testLanguage => '테스트 언어';
+
+  @override
+  String documentCountLabel(String count) {
+    return '문서 개수: $count';
+  }
+
+  @override
+  String get runBenchmark => '벤치마크 실행';
+
+  @override
+  String get running => '실행 중...';
+
+  @override
+  String get benchmarkPreparing => '벤치마크 준비 중...';
+
+  @override
+  String get deletingExisting => '기존 문서 삭제 중...';
+
+  @override
+  String indexingStart(int count) {
+    return '$count개 문서 인덱싱 시작...';
+  }
+
+  @override
+  String indexingProgress(int current, int total, String percent) {
+    return '인덱싱 중: $current/$total ($percent%)';
+  }
+
+  @override
+  String indexingComplete(int time, String perDoc) {
+    return '인덱싱 완료: ${time}ms (${perDoc}ms/문서)';
+  }
+
+  @override
+  String get searchPerformanceTest => '검색 성능 테스트 시작...';
+
+  @override
+  String searchingQuery(String query, int current, int total) {
+    return '검색 중: \"$query\" ($current/$total)';
+  }
+
+  @override
+  String get completed => '완료!';
+
+  @override
+  String get waitMessage => '잠시만 기다려주세요. UI가 일시적으로 느려질 수 있습니다.';
+
+  @override
+  String get benchmarkResults => '벤치마크 결과';
+
+  @override
+  String get totalIndexingTime => '총 인덱싱 시간';
+
+  @override
+  String get avgIndexingTimePerDoc => '문서당 평균 인덱싱 시간';
+
+  @override
+  String get searchQueryCount => '검색 쿼리 수';
+
+  @override
+  String get totalSearchTime => '총 검색 시간';
+
+  @override
+  String get avgSearchTime => '평균 검색 시간';
+
+  @override
+  String get totalSearchResults => '총 검색 결과';
+
+  @override
+  String get individualSearchTimes => '개별 검색 시간 상세';
+
+  @override
+  String benchmarkSummary(int count, String time) {
+    return '평균적으로 $count개의 문서를 ${time}ms에 검색할 수 있습니다.';
+  }
 }
