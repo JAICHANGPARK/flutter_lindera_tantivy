@@ -1,0 +1,269 @@
+[
+  {
+    "title": "할아버지와 손자",
+    "body": "할아버지는 손자와 함께 공원에서 산책을 했다. 아버지도 함께 왔다.",
+    "metadata": {
+      "category": "family",
+      "tags": ["가족", "산책"],
+      "year": 2024,
+      "language": "ko",
+      "createdAt": "2024-01-15",
+      "author": "김철수"
+    }
+  },
+  {
+    "title": "서울 맛집 탐방",
+    "body": "서울에는 맛있는 음식점이 많다. 강남, 홍대, 이태원 등 다양한 지역에 맛집이 있다.",
+    "metadata": {
+      "category": "food",
+      "tags": ["맛집", "서울"],
+      "year": 2024,
+      "language": "ko",
+      "rating": 4.5,
+      "views": 1523
+    }
+  },
+  {
+    "title": "프로그래밍 입문",
+    "body": "프로그래밍은 컴퓨터에게 명령을 내리는 것이다. 파이썬, 자바, 러스트 등 다양한 언어가 있다.",
+    "metadata": {
+      "category": "programming",
+      "tags": ["코딩", "프로그래밍"],
+      "year": 2024,
+      "language": "ko",
+      "difficulty": "beginner",
+      "author": "박영희",
+      "createdAt": "2024-03-20",
+      "lastModified": "2024-03-25"
+    }
+  },
+  {
+    "title": "한국의 사계절",
+    "body": "한국은 봄, 여름, 가을, 겨울 사계절이 뚜렷하다. 각 계절마다 아름다운 풍경을 감상할 수 있다.",
+    "metadata": {
+      "category": "nature",
+      "tags": ["계절", "자연"],
+      "year": 2024,
+      "language": "ko",
+      "season": "all"
+    }
+  },
+  {
+    "title": "커피 이야기",
+    "body": "커피는 세계에서 가장 많이 마시는 음료 중 하나다. 아메리카노, 라떼, 카푸치노 등 다양한 종류가 있다.",
+    "metadata": {
+      "category": "beverage",
+      "tags": ["커피", "음료"],
+      "year": 2024,
+      "language": "ko",
+      "price": "5000-8000",
+      "popularity": "high"
+    }
+  },
+  {
+    "title": "독서의 즐거움",
+    "body": "책을 읽는 것은 새로운 세계를 경험하는 것이다. 소설, 에세이, 전문서적 등 다양한 장르가 있다.",
+    "metadata": {
+      "category": "reading",
+      "tags": ["독서", "책"],
+      "year": 2024,
+      "language": "ko",
+      "author": "이민준",
+      "createdAt": "2024-02-10",
+      "status": "published"
+    }
+  },
+  {
+    "title": "운동의 중요성",
+    "body": "규칙적인 운동은 건강에 매우 중요하다. 걷기, 달리기, 수영 등 자신에게 맞는 운동을 찾아야 한다.",
+    "metadata": {
+      "category": "health",
+      "tags": ["운동", "건강"],
+      "year": 2024,
+      "language": "ko",
+      "views": 3421,
+      "likes": 156
+    }
+  },
+  {
+    "title": "여행의 매력",
+    "body": "여행은 새로운 문화를 경험하고 시야를 넓히는 좋은 방법이다. 제주도, 부산, 경주 등 국내 여행지도 매력적이다.",
+    "metadata": {
+      "category": "travel",
+      "tags": ["여행", "관광"],
+      "year": 2024,
+      "language": "ko",
+      "destination": "domestic",
+      "budget": "medium",
+      "createdAt": "2024-05-12"
+    }
+  },
+  {
+    "title": "음악과 삶",
+    "body": "음악은 우리의 감정을 표현하고 위로를 주는 예술이다. 클래식, 재즈, 팝 등 다양한 장르가 있다.",
+    "metadata": {
+      "category": "music",
+      "tags": ["음악", "예술"],
+      "year": 2024,
+      "language": "ko",
+      "genre": "classical",
+      "rating": 4.8
+    }
+  },
+  {
+    "title": "요리의 세계",
+    "body": "요리는 재료를 조합하여 맛있는 음식을 만드는 기술이다. 한식, 중식, 양식 등 다양한 요리법이 있다.",
+    "metadata": {
+      "category": "cooking",
+      "tags": ["요리", "음식"],
+      "year": 2024,
+      "language": "ko",
+      "difficulty": "intermediate",
+      "cookingTime": "30-60 minutes"
+    }
+  },
+  {
+    "title": "영화 감상",
+    "body": "영화는 이야기를 영상으로 표현하는 예술이다. 액션, 드라마, 코미디 등 다양한 장르를 즐길 수 있다.",
+    "metadata": {
+      "category": "entertainment",
+      "tags": ["영화", "엔터테인먼트"],
+      "year": 2024,
+      "language": "ko",
+      "author": "최지훈",
+      "views": 5234,
+      "createdAt": "2024-06-01"
+    }
+  },
+  {
+    "title": "東京の観光スポット",
+    "body": "東京には浅草寺、東京タワー、スカイツリーなど魅力的な観光地がたくさんあります。四季折々の美しい景色を楽しめます。",
+    "metadata": {
+      "category": "travel",
+      "tags": ["観光", "東京"],
+      "year": 2024,
+      "language": "ja",
+      "city": "Tokyo",
+      "author": "田中太郎",
+      "createdAt": "2024-04-15",
+      "rating": 4.9
+    }
+  },
+  {
+    "title": "日本料理の魅力",
+    "body": "日本料理は寿司、天ぷら、ラーメンなど世界中で人気があります。新鮮な食材と繊細な技術が特徴です。",
+    "metadata": {
+      "category": "food",
+      "tags": ["料理", "日本"],
+      "year": 2024,
+      "language": "ja",
+      "cuisine": "Japanese",
+      "popularity": "very high"
+    }
+  },
+  {
+    "title": "プログラミング学習",
+    "body": "プログラミングは論理的思考力を養う素晴らしい学習方法です。Python、Java、JavaScriptなど様々な言語があります。",
+    "metadata": {
+      "category": "programming",
+      "tags": ["プログラミング", "学習"],
+      "year": 2024,
+      "language": "ja",
+      "difficulty": "beginner",
+      "duration": "3 months",
+      "createdAt": "2024-01-20"
+    }
+  },
+  {
+    "title": "日本の四季",
+    "body": "日本は春夏秋冬がはっきりしています。桜の春、祭りの夏、紅葉の秋、雪の冬、それぞれに美しさがあります。",
+    "metadata": {
+      "category": "nature",
+      "tags": ["季節", "自然"],
+      "year": 2024,
+      "language": "ja",
+      "season": "all",
+      "views": 2341
+    }
+  },
+  {
+    "title": "音楽の楽しみ方",
+    "body": "音楽は心を豊かにする芸術です。クラシック、ジャズ、ポップスなど、様々なジャンルを楽しめます。",
+    "metadata": {
+      "category": "music",
+      "tags": ["音楽", "芸術"],
+      "year": 2024,
+      "language": "ja",
+      "author": "佐藤花子",
+      "instruments": ["piano", "guitar", "violin"]
+    }
+  },
+  {
+    "title": "北京旅游指南",
+    "body": "北京是中国的首都，拥有故宫、长城、天坛等众多历史文化景点。这里融合了传统与现代的魅力。",
+    "metadata": {
+      "category": "travel",
+      "tags": ["旅游", "北京"],
+      "year": 2024,
+      "language": "zh",
+      "city": "Beijing",
+      "createdAt": "2024-03-10",
+      "author": "王伟",
+      "rating": 4.7,
+      "visitors": 10000
+    }
+  },
+  {
+    "title": "中国美食文化",
+    "body": "中国菜系丰富多彩，包括川菜、粤菜、鲁菜、淮扬菜等八大菜系。每个地区都有独特的风味和特色。",
+    "metadata": {
+      "category": "food",
+      "tags": ["美食", "文化"],
+      "year": 2024,
+      "language": "zh",
+      "cuisine": "Chinese",
+      "regions": ["Sichuan", "Guangdong", "Shandong"]
+    }
+  },
+  {
+    "title": "编程入门指南",
+    "body": "编程是现代社会的重要技能。通过学习Python、Java、C++等语言，可以开发各种应用程序和网站。",
+    "metadata": {
+      "category": "programming",
+      "tags": ["编程", "学习"],
+      "year": 2024,
+      "language": "zh",
+      "difficulty": "beginner",
+      "createdAt": "2024-02-28",
+      "lastModified": "2024-03-15",
+      "author": "李明",
+      "views": 4523
+    }
+  },
+  {
+    "title": "中国的传统节日",
+    "body": "中国有春节、中秋节、端午节等传统节日。这些节日承载着深厚的文化内涵和民族情感。",
+    "metadata": {
+      "category": "culture",
+      "tags": ["节日", "传统"],
+      "year": 2024,
+      "language": "zh",
+      "festivals": ["春节", "中秋节", "端午节"],
+      "importance": "high"
+    }
+  },
+  {
+    "title": "茶文化探索",
+    "body": "中国茶文化源远流长，包括绿茶、红茶、乌龙茶、普洱茶等。品茶不仅是享受，更是一种生活艺术。",
+    "metadata": {
+      "category": "beverage",
+      "tags": ["茶", "文化"],
+      "year": 2024,
+      "language": "zh",
+      "types": ["绿茶", "红茶", "乌龙茶", "普洱茶"],
+      "author": "张华",
+      "createdAt": "2024-07-05",
+      "rating": 4.6
+    }
+  }
+]
