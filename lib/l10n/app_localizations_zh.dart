@@ -175,4 +175,88 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get webPlatformMessage =>
       '此应用使用Rust FFI，不支持Web平台。\n请使用macOS、Windows、Linux、iOS或Android应用。';
+
+  @override
+  String get performanceBenchmark => '性能基准测试';
+
+  @override
+  String get benchmarkSettings => '基准测试设置';
+
+  @override
+  String get testLanguage => '测试语言';
+
+  @override
+  String documentCountLabel(String count) {
+    return '文档数量: $count';
+  }
+
+  @override
+  String get runBenchmark => '运行基准测试';
+
+  @override
+  String get running => '运行中...';
+
+  @override
+  String get benchmarkPreparing => '准备基准测试...';
+
+  @override
+  String get deletingExisting => '正在删除现有文档...';
+
+  @override
+  String indexingStart(int count) {
+    return '开始索引$count个文档...';
+  }
+
+  @override
+  String indexingProgress(int current, int total, String percent) {
+    return '索引中: $current/$total ($percent%)';
+  }
+
+  @override
+  String indexingComplete(int time, String perDoc) {
+    return '索引完成: ${time}ms (${perDoc}ms/文档)';
+  }
+
+  @override
+  String get searchPerformanceTest => '开始搜索性能测试...';
+
+  @override
+  String searchingQuery(String query, int current, int total) {
+    return '搜索中: \"$query\" ($current/$total)';
+  }
+
+  @override
+  String get completed => '完成！';
+
+  @override
+  String get waitMessage => '请稍候。UI可能会暂时变慢。';
+
+  @override
+  String get benchmarkResults => '基准测试结果';
+
+  @override
+  String get totalIndexingTime => '总索引时间';
+
+  @override
+  String get avgIndexingTimePerDoc => '每个文档的平均索引时间';
+
+  @override
+  String get searchQueryCount => '搜索查询数';
+
+  @override
+  String get totalSearchTime => '总搜索时间';
+
+  @override
+  String get avgSearchTime => '平均搜索时间';
+
+  @override
+  String get totalSearchResults => '总搜索结果';
+
+  @override
+  String get individualSearchTimes => '单个搜索时间详情';
+
+  @override
+  String benchmarkSummary(int count, String time) {
+    return '平均可以在${time}ms内搜索$count个文档。';
+  }
 }
