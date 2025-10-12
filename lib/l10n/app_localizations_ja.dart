@@ -168,4 +168,11 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get noDocumentsToAdd => '追加する文書がありません';
+
+  @override
+  String get webPlatformNotSupported => 'Webプラットフォーム未対応';
+
+  @override
+  String get webPlatformMessage =>
+      'このアプリはRust FFIを使用しているため、Webプラットフォームではサポートされていません。\nmacOS、Windows、Linux、iOS、Androidアプリをご利用ください。';
 }
