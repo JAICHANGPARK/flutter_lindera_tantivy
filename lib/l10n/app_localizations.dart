@@ -385,6 +385,18 @@ abstract class AppLocalizations {
   /// In ko, this message translates to:
   /// **'추가할 문서가 없습니다'**
   String get noDocumentsToAdd;
+
+  /// No description provided for @webPlatformNotSupported.
+  ///
+  /// In ko, this message translates to:
+  /// **'웹 플랫폼 미지원'**
+  String get webPlatformNotSupported;
+
+  /// No description provided for @webPlatformMessage.
+  ///
+  /// In ko, this message translates to:
+  /// **'이 앱은 Rust FFI를 사용하므로 웹 플랫폼에서는 지원되지 않습니다.\nmacOS, Windows, Linux, iOS, Android 앱을 사용해주세요.'**
+  String get webPlatformMessage;
 }
 
 class _AppLocalizationsDelegate
