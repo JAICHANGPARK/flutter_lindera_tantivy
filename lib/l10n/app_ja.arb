@@ -115,5 +115,7 @@
       }
     }
   },
-  "noDocumentsToAdd": "追加する文書がありません"
+  "noDocumentsToAdd": "追加する文書がありません",
+  "webPlatformNotSupported": "Webプラットフォーム未対応",
+  "webPlatformMessage": "このアプリはRust FFIを使用しているため、Webプラットフォームではサポートされていません。\nmacOS、Windows、Linux、iOS、Androidアプリをご利用ください。"
 }
