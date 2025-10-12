@@ -175,4 +175,88 @@ class AppLocalizationsJa extends AppLocalizations {
   @override
   String get webPlatformMessage =>
       'このアプリはRust FFIを使用しているため、Webプラットフォームではサポートされていません。\nmacOS、Windows、Linux、iOS、Androidアプリをご利用ください。';
+
+  @override
+  String get performanceBenchmark => '性能ベンチマーク';
+
+  @override
+  String get benchmarkSettings => 'ベンチマーク設定';
+
+  @override
+  String get testLanguage => 'テスト言語';
+
+  @override
+  String documentCountLabel(String count) {
+    return '文書数: $count';
+  }
+
+  @override
+  String get runBenchmark => 'ベンチマーク実行';
+
+  @override
+  String get running => '実行中...';
+
+  @override
+  String get benchmarkPreparing => 'ベンチマーク準備中...';
+
+  @override
+  String get deletingExisting => '既存の文書を削除中...';
+
+  @override
+  String indexingStart(int count) {
+    return '$count件の文書のインデックス作成を開始...';
+  }
+
+  @override
+  String indexingProgress(int current, int total, String percent) {
+    return 'インデックス作成中: $current/$total ($percent%)';
+  }
+
+  @override
+  String indexingComplete(int time, String perDoc) {
+    return 'インデックス作成完了: ${time}ms (${perDoc}ms/文書)';
+  }
+
+  @override
+  String get searchPerformanceTest => '検索性能テスト開始...';
+
+  @override
+  String searchingQuery(String query, int current, int total) {
+    return '検索中: \"$query\" ($current/$total)';
+  }
+
+  @override
+  String get completed => '完了！';
+
+  @override
+  String get waitMessage => 'お待ちください。UIが一時的に遅くなる可能性があります。';
+
+  @override
+  String get benchmarkResults => 'ベンチマーク結果';
+
+  @override
+  String get totalIndexingTime => '総インデックス作成時間';
+
+  @override
+  String get avgIndexingTimePerDoc => '文書あたりの平均インデックス作成時間';
+
+  @override
+  String get searchQueryCount => '検索クエリ数';
+
+  @override
+  String get totalSearchTime => '総検索時間';
+
+  @override
+  String get avgSearchTime => '平均検索時間';
+
+  @override
+  String get totalSearchResults => '総検索結果';
+
+  @override
+  String get individualSearchTimes => '個別検索時間詳細';
+
+  @override
+  String benchmarkSummary(int count, String time) {
+    return '平均して$count件の文書を${time}msで検索できます。';
+  }
 }
