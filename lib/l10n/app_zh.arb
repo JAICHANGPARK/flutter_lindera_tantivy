@@ -1,0 +1,119 @@
+{
+  "appTitle": "搜索系统",
+  "searchHint": "请输入搜索词 (例如: 仁川、机场、日本)",
+  "search": "搜索",
+  "searchResults": "搜索结果: {count}个",
+  "@searchResults": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noResults": "没有找到搜索结果",
+  "indexInitializing": "正在初始化索引...",
+  "indexReady": "准备就绪！请输入搜索词。",
+  "searching": "正在搜索...",
+  "documentCount": "文档: {count}个",
+  "@documentCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "addDocument": "添加文档",
+  "addMultipleDocuments": "添加多个文档",
+  "loadFromJson": "从JSON文件加载",
+  "deleteAll": "全部删除",
+  "title": "标题",
+  "content": "内容",
+  "cancel": "取消",
+  "add": "添加",
+  "edit": "编辑",
+  "delete": "删除",
+  "titleRequired": "请输入标题",
+  "contentRequired": "请输入内容",
+  "titleAndContentRequired": "请输入标题和内容",
+  "enterTitle": "请输入文档标题",
+  "enterContent": "请输入文档内容",
+  "metadata": "元数据",
+  "metadataJson": "元数据 (JSON)",
+  "autoGenerateUuid": "UUID将自动生成",
+  "editDocument": "编辑文档",
+  "deleteDocument": "删除文档",
+  "deleteConfirm": "确定要删除文档ID \"{id}\"吗？",
+  "@deleteConfirm": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteAllWarning": "确定要删除所有文档吗？\n此操作无法撤销。",
+  "warning": "⚠️ 警告",
+  "allDocumentsDeleted": "所有文档已删除。",
+  "enterSearchTerm": "请输入搜索词。",
+  "initializingIndex": "正在初始化搜索索引...",
+  "initFailed": "初始化失败: {error}",
+  "@initFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "searchFailed": "搜索失败: {error}",
+  "@searchFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "addFailed": "添加失败: {error}",
+  "@addFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "updateFailed": "更新失败: {error}",
+  "@updateFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteFailed": "删除失败: {error}",
+  "@deleteFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "loadingFromJson": "正在从JSON文件加载文档...",
+  "jsonLoadFailed": "JSON加载失败: {error}",
+  "@jsonLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "bulkAddTitle": "添加多个文档",
+  "bulkAddFormat": "格式: 标题|内容|元数据 (用换行符分隔)",
+  "documentList": "文档列表",
+  "invalidFormat": "格式错误: {line}",
+  "@invalidFormat": {
+    "placeholders": {
+      "line": {
+        "type": "String"
+      }
+    }
+  },
+  "noDocumentsToAdd": "没有要添加的文档"
+}
