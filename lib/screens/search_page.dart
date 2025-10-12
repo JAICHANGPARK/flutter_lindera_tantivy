@@ -391,11 +391,12 @@ class _SearchPageState extends ConsumerState<SearchPage> {
         children: [
           Container(
             padding: EdgeInsets.all(12),
-            margin: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             decoration: BoxDecoration(
               border: Border.all(
                 color: Theme.of(context).colorScheme.outlineVariant,
               ),
+              borderRadius: BorderRadius.circular(8),
             ),
             child: Row(
               spacing: 8,
