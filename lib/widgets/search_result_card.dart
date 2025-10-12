@@ -118,10 +118,9 @@ class SearchResultCard extends StatelessWidget {
                   Icon(
                     Icons.info_outline,
                     size: 16,
-                    color: Theme.of(context)
-                        .colorScheme
-                        .onSurface
-                        .withOpacity(0.6),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.onSurface.withOpacity(0.6),
                   ),
                   const SizedBox(width: 6),
                   Text(
@@ -129,10 +128,9 @@ class SearchResultCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w600,
-                      color: Theme.of(context)
-                          .colorScheme
-                          .onSurface
-                          .withOpacity(0.7),
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.onSurface.withOpacity(0.7),
                     ),
                   ),
                 ],
@@ -157,10 +155,9 @@ class SearchResultCard extends StatelessWidget {
                     'ID: ${result.id.length > 20 ? "${result.id.substring(0, 20)}..." : result.id}',
                     style: TextStyle(
                       fontSize: 11,
-                      color: Theme.of(context)
-                          .colorScheme
-                          .onSurface
-                          .withOpacity(0.5),
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.onSurface.withOpacity(0.5),
                     ),
                   ),
                 ),
@@ -196,7 +193,9 @@ class SearchResultCard extends StatelessWidget {
 
   /// Metadata를 Chip 위젯으로 변환하는 헬퍼 함수
   List<Widget> _buildMetadataChips(
-      BuildContext context, Map<String, dynamic> metadata) {
+    BuildContext context,
+    Map<String, dynamic> metadata,
+  ) {
     final chips = <Widget>[];
     final colorScheme = Theme.of(context).colorScheme;
 
