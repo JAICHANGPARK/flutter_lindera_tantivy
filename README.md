@@ -13,6 +13,7 @@ A high-performance, full-text search application built with Flutter and Rust, fe
 - **🎨 Theme Support**: Light mode, Dark mode, and System theme
 - **📱 Cross-Platform**: Supports macOS, Windows, Linux, iOS, and Android
 - **💾 Persistent Storage**: Local document indexing with automatic persistence
+- **📊 Performance Benchmark**: Built-in tool to measure indexing and search performance with up to 10,000 documents
 
 ## Technology Stack
 
@@ -112,6 +113,26 @@ Click the language icon in the app bar to switch between:
 - 🇺🇸 English
 - 🇯🇵 Japanese
 - 🇨🇳 Chinese
+
+### Performance Benchmark
+
+Access the benchmark tool from the menu to measure search performance:
+
+1. Select the **"Performance Benchmark"** option from the menu
+2. Choose the test language (Korean, English, Japanese, Chinese)
+3. Adjust the number of documents using the slider (100 - 10,000)
+4. Click **"Run Benchmark"** to start the test
+5. View detailed results including:
+   - Total indexing time
+   - Average time per document
+   - Average search time per query
+   - Individual query performance metrics
+
+The benchmark feature helps you:
+- Test search engine performance with large datasets
+- Compare performance across different languages
+- Measure indexing and search speeds
+- Optimize your search configuration
 
 ## Architecture
 
