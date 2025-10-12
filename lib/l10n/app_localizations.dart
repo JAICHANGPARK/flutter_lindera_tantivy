@@ -397,6 +397,150 @@ abstract class AppLocalizations {
   /// In ko, this message translates to:
   /// **'이 앱은 Rust FFI를 사용하므로 웹 플랫폼에서는 지원되지 않습니다.\nmacOS, Windows, Linux, iOS, Android 앱을 사용해주세요.'**
   String get webPlatformMessage;
+
+  /// No description provided for @performanceBenchmark.
+  ///
+  /// In ko, this message translates to:
+  /// **'성능 벤치마크'**
+  String get performanceBenchmark;
+
+  /// No description provided for @benchmarkSettings.
+  ///
+  /// In ko, this message translates to:
+  /// **'벤치마크 설정'**
+  String get benchmarkSettings;
+
+  /// No description provided for @testLanguage.
+  ///
+  /// In ko, this message translates to:
+  /// **'테스트 언어'**
+  String get testLanguage;
+
+  /// No description provided for @documentCountLabel.
+  ///
+  /// In ko, this message translates to:
+  /// **'문서 개수: {count}'**
+  String documentCountLabel(String count);
+
+  /// No description provided for @runBenchmark.
+  ///
+  /// In ko, this message translates to:
+  /// **'벤치마크 실행'**
+  String get runBenchmark;
+
+  /// No description provided for @running.
+  ///
+  /// In ko, this message translates to:
+  /// **'실행 중...'**
+  String get running;
+
+  /// No description provided for @benchmarkPreparing.
+  ///
+  /// In ko, this message translates to:
+  /// **'벤치마크 준비 중...'**
+  String get benchmarkPreparing;
+
+  /// No description provided for @deletingExisting.
+  ///
+  /// In ko, this message translates to:
+  /// **'기존 문서 삭제 중...'**
+  String get deletingExisting;
+
+  /// No description provided for @indexingStart.
+  ///
+  /// In ko, this message translates to:
+  /// **'{count}개 문서 인덱싱 시작...'**
+  String indexingStart(int count);
+
+  /// No description provided for @indexingProgress.
+  ///
+  /// In ko, this message translates to:
+  /// **'인덱싱 중: {current}/{total} ({percent}%)'**
+  String indexingProgress(int current, int total, String percent);
+
+  /// No description provided for @indexingComplete.
+  ///
+  /// In ko, this message translates to:
+  /// **'인덱싱 완료: {time}ms ({perDoc}ms/문서)'**
+  String indexingComplete(int time, String perDoc);
+
+  /// No description provided for @searchPerformanceTest.
+  ///
+  /// In ko, this message translates to:
+  /// **'검색 성능 테스트 시작...'**
+  String get searchPerformanceTest;
+
+  /// No description provided for @searchingQuery.
+  ///
+  /// In ko, this message translates to:
+  /// **'검색 중: \"{query}\" ({current}/{total})'**
+  String searchingQuery(String query, int current, int total);
+
+  /// No description provided for @completed.
+  ///
+  /// In ko, this message translates to:
+  /// **'완료!'**
+  String get completed;
+
+  /// No description provided for @waitMessage.
+  ///
+  /// In ko, this message translates to:
+  /// **'잠시만 기다려주세요. UI가 일시적으로 느려질 수 있습니다.'**
+  String get waitMessage;
+
+  /// No description provided for @benchmarkResults.
+  ///
+  /// In ko, this message translates to:
+  /// **'벤치마크 결과'**
+  String get benchmarkResults;
+
+  /// No description provided for @totalIndexingTime.
+  ///
+  /// In ko, this message translates to:
+  /// **'총 인덱싱 시간'**
+  String get totalIndexingTime;
+
+  /// No description provided for @avgIndexingTimePerDoc.
+  ///
+  /// In ko, this message translates to:
+  /// **'문서당 평균 인덱싱 시간'**
+  String get avgIndexingTimePerDoc;
+
+  /// No description provided for @searchQueryCount.
+  ///
+  /// In ko, this message translates to:
+  /// **'검색 쿼리 수'**
+  String get searchQueryCount;
+
+  /// No description provided for @totalSearchTime.
+  ///
+  /// In ko, this message translates to:
+  /// **'총 검색 시간'**
+  String get totalSearchTime;
+
+  /// No description provided for @avgSearchTime.
+  ///
+  /// In ko, this message translates to:
+  /// **'평균 검색 시간'**
+  String get avgSearchTime;
+
+  /// No description provided for @totalSearchResults.
+  ///
+  /// In ko, this message translates to:
+  /// **'총 검색 결과'**
+  String get totalSearchResults;
+
+  /// No description provided for @individualSearchTimes.
+  ///
+  /// In ko, this message translates to:
+  /// **'개별 검색 시간 상세'**
+  String get individualSearchTimes;
+
+  /// No description provided for @benchmarkSummary.
+  ///
+  /// In ko, this message translates to:
+  /// **'평균적으로 {count}개의 문서를 {time}ms에 검색할 수 있습니다.'**
+  String benchmarkSummary(int count, String time);
 }
 
 class _AppLocalizationsDelegate
