@@ -259,4 +259,16 @@ class AppLocalizationsKo extends AppLocalizations {
   String benchmarkSummary(int count, String time) {
     return '평균적으로 $count개의 문서를 ${time}ms에 검색할 수 있습니다.';
   }
+
+  @override
+  String get changeTheme => '테마 변경';
+
+  @override
+  String get lightMode => '라이트 모드';
+
+  @override
+  String get darkMode => '다크 모드';
+
+  @override
+  String get systemSettings => '시스템 설정';
 }
