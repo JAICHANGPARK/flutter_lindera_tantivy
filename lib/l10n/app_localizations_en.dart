@@ -261,6 +261,18 @@ class AppLocalizationsEn extends AppLocalizations {
   String benchmarkSummary(int count, String time) {
     return 'On average, $count documents can be searched in ${time}ms.';
   }
+
+  @override
+  String get changeTheme => 'Change Theme';
+
+  @override
+  String get lightMode => 'Light Mode';
+
+  @override
+  String get darkMode => 'Dark Mode';
+
+  @override
+  String get systemSettings => 'System Settings';
 }
 
 /// The translations for English, as used in the United Kingdom (`en_GB`).
