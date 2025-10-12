@@ -168,4 +168,11 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get noDocumentsToAdd => '没有要添加的文档';
+
+  @override
+  String get webPlatformNotSupported => '不支持Web平台';
+
+  @override
+  String get webPlatformMessage =>
+      '此应用使用Rust FFI，不支持Web平台。\n请使用macOS、Windows、Linux、iOS或Android应用。';
 }
