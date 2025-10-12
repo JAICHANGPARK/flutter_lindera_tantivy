@@ -177,6 +177,90 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get webPlatformMessage =>
       'This app uses Rust FFI and is not supported on web platforms.\nPlease use the macOS, Windows, Linux, iOS, or Android app.';
+
+  @override
+  String get performanceBenchmark => 'Performance Benchmark';
+
+  @override
+  String get benchmarkSettings => 'Benchmark Settings';
+
+  @override
+  String get testLanguage => 'Test Language';
+
+  @override
+  String documentCountLabel(String count) {
+    return 'Document Count: $count';
+  }
+
+  @override
+  String get runBenchmark => 'Run Benchmark';
+
+  @override
+  String get running => 'Running...';
+
+  @override
+  String get benchmarkPreparing => 'Preparing benchmark...';
+
+  @override
+  String get deletingExisting => 'Deleting existing documents...';
+
+  @override
+  String indexingStart(int count) {
+    return 'Starting to index $count documents...';
+  }
+
+  @override
+  String indexingProgress(int current, int total, String percent) {
+    return 'Indexing: $current/$total ($percent%)';
+  }
+
+  @override
+  String indexingComplete(int time, String perDoc) {
+    return 'Indexing complete: ${time}ms (${perDoc}ms/doc)';
+  }
+
+  @override
+  String get searchPerformanceTest => 'Starting search performance test...';
+
+  @override
+  String searchingQuery(String query, int current, int total) {
+    return 'Searching: \"$query\" ($current/$total)';
+  }
+
+  @override
+  String get completed => 'Completed!';
+
+  @override
+  String get waitMessage => 'Please wait. UI may be temporarily slow.';
+
+  @override
+  String get benchmarkResults => 'Benchmark Results';
+
+  @override
+  String get totalIndexingTime => 'Total Indexing Time';
+
+  @override
+  String get avgIndexingTimePerDoc => 'Avg. Indexing Time per Doc';
+
+  @override
+  String get searchQueryCount => 'Search Query Count';
+
+  @override
+  String get totalSearchTime => 'Total Search Time';
+
+  @override
+  String get avgSearchTime => 'Avg. Search Time';
+
+  @override
+  String get totalSearchResults => 'Total Search Results';
+
+  @override
+  String get individualSearchTimes => 'Individual Search Times';
+
+  @override
+  String benchmarkSummary(int count, String time) {
+    return 'On average, $count documents can be searched in ${time}ms.';
+  }
 }
 
 /// The translations for English, as used in the United Kingdom (`en_GB`).
