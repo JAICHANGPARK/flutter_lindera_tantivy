@@ -259,4 +259,16 @@ class AppLocalizationsJa extends AppLocalizations {
   String benchmarkSummary(int count, String time) {
     return '平均して$count件の文書を${time}msで検索できます。';
   }
+
+  @override
+  String get changeTheme => 'テーマ変更';
+
+  @override
+  String get lightMode => 'ライトモード';
+
+  @override
+  String get darkMode => 'ダークモード';
+
+  @override
+  String get systemSettings => 'システム設定';
 }
