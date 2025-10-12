@@ -1,0 +1,119 @@
+{
+  "appTitle": "Search System",
+  "searchHint": "Enter search term (e.g., Incheon, airport, Japan)",
+  "search": "Search",
+  "searchResults": "Search results: {count}",
+  "@searchResults": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noResults": "No results found",
+  "indexInitializing": "Initializing index...",
+  "indexReady": "Ready! Enter your search term.",
+  "searching": "Searching...",
+  "documentCount": "Documents: {count}",
+  "@documentCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "addDocument": "Add Document",
+  "addMultipleDocuments": "Add Multiple Documents",
+  "loadFromJson": "Load from JSON",
+  "deleteAll": "Delete All",
+  "title": "Title",
+  "content": "Content",
+  "cancel": "Cancel",
+  "add": "Add",
+  "edit": "Edit",
+  "delete": "Delete",
+  "titleRequired": "Please enter a title",
+  "contentRequired": "Please enter content",
+  "titleAndContentRequired": "Please enter both title and content",
+  "enterTitle": "Enter document title",
+  "enterContent": "Enter document content",
+  "metadata": "Metadata",
+  "metadataJson": "Metadata (JSON)",
+  "autoGenerateUuid": "UUID will be generated automatically",
+  "editDocument": "Edit Document",
+  "deleteDocument": "Delete Document",
+  "deleteConfirm": "Are you sure you want to delete document ID \"{id}\"?",
+  "@deleteConfirm": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteAllWarning": "Are you sure you want to delete all documents?\nThis action cannot be undone.",
+  "warning": "⚠️ Warning",
+  "allDocumentsDeleted": "All documents have been deleted.",
+  "enterSearchTerm": "Please enter a search term.",
+  "initializingIndex": "Initializing search index...",
+  "initFailed": "Initialization failed: {error}",
+  "@initFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "searchFailed": "Search failed: {error}",
+  "@searchFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "addFailed": "Failed to add: {error}",
+  "@addFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "updateFailed": "Failed to update: {error}",
+  "@updateFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteFailed": "Failed to delete: {error}",
+  "@deleteFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "loadingFromJson": "Loading documents from JSON...",
+  "jsonLoadFailed": "Failed to load JSON: {error}",
+  "@jsonLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "bulkAddTitle": "Add Multiple Documents",
+  "bulkAddFormat": "Format: title|content|metadata (separated by newlines)",
+  "documentList": "Document List",
+  "invalidFormat": "Invalid format: {line}",
+  "@invalidFormat": {
+    "placeholders": {
+      "line": {
+        "type": "String"
+      }
+    }
+  },
+  "noDocumentsToAdd": "No documents to add"
+}
