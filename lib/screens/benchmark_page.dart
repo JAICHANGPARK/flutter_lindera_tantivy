@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tantivy_flutter_app/services/benchmark_service.dart';
+import 'package:tantivy_flutter_app/l10n/app_localizations.dart';
 
 class BenchmarkPage extends StatefulWidget {
   const BenchmarkPage({super.key});
