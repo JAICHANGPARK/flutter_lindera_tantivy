@@ -1,0 +1,119 @@
+{
+  "appTitle": "한국어 검색 시스템",
+  "searchHint": "검색어를 입력하세요 (예: 인천, 공항, 일본)",
+  "search": "검색",
+  "searchResults": "검색 결과: {count}개",
+  "@searchResults": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noResults": "검색 결과가 없습니다",
+  "indexInitializing": "인덱스 초기화 중...",
+  "indexReady": "준비 완료! 검색어를 입력하세요.",
+  "searching": "검색 중...",
+  "documentCount": "문서: {count}개",
+  "@documentCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "addDocument": "문서 추가",
+  "addMultipleDocuments": "여러 문서 추가",
+  "loadFromJson": "JSON 파일에서 로드",
+  "deleteAll": "모두 삭제",
+  "title": "제목",
+  "content": "내용",
+  "cancel": "취소",
+  "add": "추가",
+  "edit": "수정",
+  "delete": "삭제",
+  "titleRequired": "제목을 입력하세요",
+  "contentRequired": "내용을 입력하세요",
+  "titleAndContentRequired": "제목과 내용을 입력해주세요",
+  "enterTitle": "문서 제목을 입력하세요",
+  "enterContent": "문서 내용을 입력하세요",
+  "metadata": "Metadata",
+  "metadataJson": "Metadata (JSON)",
+  "autoGenerateUuid": "UUID는 자동으로 생성됩니다",
+  "editDocument": "문서 수정",
+  "deleteDocument": "문서 삭제",
+  "deleteConfirm": "문서 ID \"{id}\"를 삭제하시겠습니까?",
+  "@deleteConfirm": {
+    "placeholders": {
+      "id": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteAllWarning": "모든 문서를 삭제하시겠습니까?\n이 작업은 되돌릴 수 없습니다.",
+  "warning": "⚠️ 경고",
+  "allDocumentsDeleted": "모든 문서가 삭제되었습니다.",
+  "enterSearchTerm": "검색어를 입력하세요.",
+  "initializingIndex": "검색 인덱스 초기화 중...",
+  "initFailed": "초기화 실패: {error}",
+  "@initFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "searchFailed": "검색 실패: {error}",
+  "@searchFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "addFailed": "추가 실패: {error}",
+  "@addFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "updateFailed": "수정 실패: {error}",
+  "@updateFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "deleteFailed": "삭제 실패: {error}",
+  "@deleteFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "loadingFromJson": "JSON 파일에서 문서 로드 중...",
+  "jsonLoadFailed": "JSON 로드 실패: {error}",
+  "@jsonLoadFailed": {
+    "placeholders": {
+      "error": {
+        "type": "String"
+      }
+    }
+  },
+  "bulkAddTitle": "여러 문서 추가",
+  "bulkAddFormat": "형식: 제목|내용|메타데이터 (줄바꿈으로 구분)",
+  "documentList": "문서 목록",
+  "invalidFormat": "잘못된 형식: {line}",
+  "@invalidFormat": {
+    "placeholders": {
+      "line": {
+        "type": "String"
+      }
+    }
+  },
+  "noDocumentsToAdd": "추가할 문서가 없습니다"
+}
