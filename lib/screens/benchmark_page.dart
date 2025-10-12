@@ -17,9 +17,11 @@ class _BenchmarkPageState extends State<BenchmarkPage> {
   String _selectedLanguage = 'ko';
 
   Future<void> _runBenchmark() async {
+    final l10n = AppLocalizations.of(context)!;
+
     setState(() {
       _isRunning = true;
-      _progressMessage = '벤치마크 준비 중...';
+      _progressMessage = l10n.benchmarkPreparing;
       _result = null;
     });
 
@@ -38,21 +40,23 @@ class _BenchmarkPageState extends State<BenchmarkPage> {
       setState(() {
         _result = result;
         _isRunning = false;
-        _progressMessage = '완료!';
+        _progressMessage = l10n.completed;
       });
     } catch (e) {
       setState(() {
         _isRunning = false;
-        _progressMessage = '오류 발생: $e';
+        _progressMessage = 'Error: $e';
       });
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('🚀 성능 벤치마크'),
+        title: Text('🚀 ${l10n.performanceBenchmark}'),
         elevation: 2,
       ),
       body: SingleChildScrollView(
@@ -68,7 +72,7 @@ class _BenchmarkPageState extends State<BenchmarkPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      '벤치마크 설정',
+                      l10n.benchmarkSettings,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                     const SizedBox(height: 16),
@@ -80,7 +84,7 @@ class _BenchmarkPageState extends State<BenchmarkPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '테스트 언어',
+                                l10n.testLanguage,
                                 style: Theme.of(context).textTheme.bodyLarge,
                               ),
                               const SizedBox(height: 8),
@@ -115,7 +119,7 @@ class _BenchmarkPageState extends State<BenchmarkPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                '문서 개수: ${_documentCount.toString()}',
+                                l10n.documentCountLabel(_documentCount.toString()),
                                 style: Theme.of(context).textTheme.bodyLarge,
                               ),
                               Slider(
@@ -152,7 +156,7 @@ class _BenchmarkPageState extends State<BenchmarkPage> {
                                 ),
                               )
                             : const Icon(Icons.play_arrow),
-                        label: Text(_isRunning ? '실행 중...' : '벤치마크 실행'),
+                        label: Text(_isRunning ? l10n.running : l10n.runBenchmark),
                         style: ElevatedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(vertical: 16),
                         ),
@@ -204,6 +208,7 @@ class _BenchmarkPageState extends State<BenchmarkPage> {
 
   Widget _buildResultCard() {
     final result = _result!;
+    final l10n = AppLocalizations.of(context)!;
 
     return Card(
       child: Padding(
@@ -219,7 +224,7 @@ class _BenchmarkPageState extends State<BenchmarkPage> {
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  '벤치마크 결과',
+                  l10n.benchmarkResults,
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
               ],
@@ -228,19 +233,19 @@ class _BenchmarkPageState extends State<BenchmarkPage> {
 
             // 인덱싱 성능
             _buildMetricRow(
-              '문서 개수',
-              '${result.documentCount.toStringAsFixed(0)}개',
+              l10n.documentCount(result.documentCount.toInt()),
+              '${result.documentCount.toStringAsFixed(0)}',
               Icons.description,
             ),
             const SizedBox(height: 12),
             _buildMetricRow(
-              '총 인덱싱 시간',
-              '${(result.indexingTime.inMilliseconds / 1000).toStringAsFixed(2)}초',
+              l10n.totalIndexingTime,
+              '${(result.indexingTime.inMilliseconds / 1000).toStringAsFixed(2)}s',
               Icons.timer,
             ),
             const SizedBox(height: 12),
             _buildMetricRow(
-              '문서당 평균 인덱싱 시간',
+              l10n.avgIndexingTimePerDoc,
               '${result.indexingTimePerDocMs.toStringAsFixed(3)}ms',
               Icons.speed,
               highlight: true,
@@ -250,27 +255,27 @@ class _BenchmarkPageState extends State<BenchmarkPage> {
 
             // 검색 성능
             _buildMetricRow(
-              '검색 쿼리 수',
-              '${result.individualSearchTimes.length}개',
+              l10n.searchQueryCount,
+              '${result.individualSearchTimes.length}',
               Icons.search,
             ),
             const SizedBox(height: 12),
             _buildMetricRow(
-              '총 검색 시간',
-              '${(result.searchTime.inMilliseconds / 1000).toStringAsFixed(3)}초',
+              l10n.totalSearchTime,
+              '${(result.searchTime.inMilliseconds / 1000).toStringAsFixed(3)}s',
               Icons.timer,
             ),
             const SizedBox(height: 12),
             _buildMetricRow(
-              '평균 검색 시간',
+              l10n.avgSearchTime,
               '${result.averageSearchTimeMs.toStringAsFixed(3)}ms',
               Icons.speed,
               highlight: true,
             ),
             const SizedBox(height: 12),
             _buildMetricRow(
-              '총 검색 결과',
-              '${result.searchResultCount}건',
+              l10n.totalSearchResults,
+              '${result.searchResultCount}',
               Icons.list,
             ),
 
@@ -278,7 +283,7 @@ class _BenchmarkPageState extends State<BenchmarkPage> {
 
             // 개별 검색 시간
             ExpansionTile(
-              title: const Text('개별 검색 시간 상세'),
+              title: Text(l10n.individualSearchTimes),
               children: [
                 ListView.builder(
                   shrinkWrap: true,
@@ -334,7 +339,10 @@ class _BenchmarkPageState extends State<BenchmarkPage> {
                   const SizedBox(width: 12),
                   Expanded(
                     child: Text(
-                      '평균적으로 ${result.documentCount}개의 문서를 ${result.averageSearchTimeMs.toStringAsFixed(1)}ms에 검색할 수 있습니다.',
+                      l10n.benchmarkSummary(
+                        result.documentCount.toInt(),
+                        result.averageSearchTimeMs.toStringAsFixed(1),
+                      ),
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.onPrimaryContainer,
                       ),
