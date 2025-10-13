@@ -15,6 +15,38 @@ use serde_json::Value as JsonValue;
 use std::sync::Mutex;
 use std::path::Path;
 
+// 사전 타입 enum
+#[derive(Clone, Debug)]
+pub enum DictionaryType {
+    Korean,                 // ko-dic
+    JapaneseIpadic,        // ipadic
+    // JapaneseIpadicNeologd, // ipadic-neologd
+    JapaneseUnidic,        // unidic
+    Chinese,               // cc-cedict
+}
+
+impl DictionaryType {
+    fn to_embedded_path(&self) -> &'static str {
+        match self {
+            DictionaryType::Korean => "embedded://ko-dic",
+            DictionaryType::JapaneseIpadic => "embedded://ipadic",
+            // DictionaryType::JapaneseIpadicNeologd => "embedded://ipadic-neologd",
+            DictionaryType::JapaneseUnidic => "embedded://unidic",
+            DictionaryType::Chinese => "embedded://cc-cedict",
+        }
+    }
+
+    fn to_tokenizer_name(&self) -> &'static str {
+        match self {
+            DictionaryType::Korean => "lang_ko",
+            DictionaryType::JapaneseIpadic => "lang_ja_ipadic",
+            // DictionaryType::JapaneseIpadicNeologd => "lang_ja_ipadic_neologd",
+            DictionaryType::JapaneseUnidic => "lang_ja_unidic",
+            DictionaryType::Chinese => "lang_zh",
+        }
+    }
+}
+
 // 검색 결과를 담는 구조체
 #[derive(Clone, Debug)]
 pub struct SearchResult {
@@ -42,9 +74,12 @@ struct SearchIndex {
 
 /// 검색 인덱스를 초기화합니다
 #[flutter_rust_bridge::frb(sync)]
-pub fn initialize_search_index() -> Result<String, String> {
+pub fn initialize_search_index(dictionary_type: DictionaryType) -> Result<String, String> {
     // create schema builder
     let mut schema_builder = Schema::builder();
+
+    // 선택한 사전에 맞는 토크나이저 이름 가져오기
+    let tokenizer_name = dictionary_type.to_tokenizer_name();
 
     // add id field (UUID 문자열)
     let id = schema_builder.add_text_field(
@@ -64,7 +99,7 @@ pub fn initialize_search_index() -> Result<String, String> {
         TextOptions::default()
             .set_indexing_options(
                 TextFieldIndexing::default()
-                    .set_tokenizer("lang_ko")
+                    .set_tokenizer(tokenizer_name)
                     .set_index_option(IndexRecordOption::WithFreqsAndPositions),
             )
             .set_stored(),
@@ -76,7 +111,7 @@ pub fn initialize_search_index() -> Result<String, String> {
         TextOptions::default()
             .set_indexing_options(
                 TextFieldIndexing::default()
-                    .set_tokenizer("lang_ko")
+                    .set_tokenizer(tokenizer_name)
                     .set_index_option(IndexRecordOption::WithFreqsAndPositions),
             )
             .set_stored(),
@@ -129,15 +164,15 @@ pub fn initialize_search_index() -> Result<String, String> {
         .tokenizers()
         .register("ngram_tokenizer", NgramTokenizer::new(2, 3, false).unwrap());
 
-    // Tokenizer with ko-dic
+    // Tokenizer with selected dictionary
     let mode = Mode::Normal;
-    let dictionary = load_dictionary("embedded://ko-dic").map_err(|e| e.to_string())?;
+    let dictionary = load_dictionary(dictionary_type.to_embedded_path()).map_err(|e| e.to_string())?;
     let user_dictionary = None;
     let segmenter = Segmenter::new(mode, dictionary, user_dictionary);
     let tokenizer = LinderaTokenizer::from_segmenter(segmenter);
 
     // register Lindera tokenizer
-    index.tokenizers().register("lang_ko", tokenizer);
+    index.tokenizers().register(tokenizer_name, tokenizer);
 
     // 전역 상태에 저장
     let mut search_index = SEARCH_INDEX.lock().unwrap();
@@ -157,9 +192,12 @@ pub fn initialize_search_index() -> Result<String, String> {
 
 /// 디스크에 인덱스를 생성하거나 로드합니다
 #[flutter_rust_bridge::frb(sync)]
-pub fn initialize_search_index_with_path(index_path: String) -> Result<String, String> {
+pub fn initialize_search_index_with_path(dictionary_type: DictionaryType, index_path: String) -> Result<String, String> {
     // create schema builder
     let mut schema_builder = Schema::builder();
+
+    // 선택한 사전에 맞는 토크나이저 이름 가져오기
+    let tokenizer_name = dictionary_type.to_tokenizer_name();
 
     // add id field (UUID 문자열)
     let id = schema_builder.add_text_field(
@@ -179,7 +217,7 @@ pub fn initialize_search_index_with_path(index_path: String) -> Result<String, S
         TextOptions::default()
             .set_indexing_options(
                 TextFieldIndexing::default()
-                    .set_tokenizer("lang_ko")
+                    .set_tokenizer(tokenizer_name)
                     .set_index_option(IndexRecordOption::WithFreqsAndPositions),
             )
             .set_stored(),
@@ -191,7 +229,7 @@ pub fn initialize_search_index_with_path(index_path: String) -> Result<String, S
         TextOptions::default()
             .set_indexing_options(
                 TextFieldIndexing::default()
-                    .set_tokenizer("lang_ko")
+                    .set_tokenizer(tokenizer_name)
                     .set_index_option(IndexRecordOption::WithFreqsAndPositions),
             )
             .set_stored(),
@@ -252,15 +290,15 @@ pub fn initialize_search_index_with_path(index_path: String) -> Result<String, S
         .tokenizers()
         .register("ngram_tokenizer", NgramTokenizer::new(2, 3, false).unwrap());
 
-    // Tokenizer with ko-dic
+    // Tokenizer with selected dictionary
     let mode = Mode::Normal;
-    let dictionary = load_dictionary("embedded://ko-dic").map_err(|e| e.to_string())?;
+    let dictionary = load_dictionary(dictionary_type.to_embedded_path()).map_err(|e| e.to_string())?;
     let user_dictionary = None;
     let segmenter = Segmenter::new(mode, dictionary, user_dictionary);
     let tokenizer = LinderaTokenizer::from_segmenter(segmenter);
 
     // register Lindera tokenizer
-    index.tokenizers().register("lang_ko", tokenizer);
+    index.tokenizers().register(tokenizer_name, tokenizer);
 
     // 전역 상태에 저장
     let mut search_index = SEARCH_INDEX.lock().unwrap();
