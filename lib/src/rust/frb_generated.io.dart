@@ -11,118 +11,174 @@ import 'dart:ffi' as ffi;
 import 'frb_generated.dart';
 import 'package:flutter_rust_bridge/flutter_rust_bridge_for_generated_io.dart';
 
+abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
+  RustLibApiImplPlatform({
+    required super.handler,
+    required super.wire,
+    required super.generalizedFrbRustBinding,
+    required super.portManager,
+  });
 
+  @protected
+  String dco_decode_String(dynamic raw);
 
+  @protected
+  DictionaryType dco_decode_dictionary_type(dynamic raw);
 
-                abstract class RustLibApiImplPlatform extends BaseApiImpl<RustLibWire> {
-                  RustLibApiImplPlatform({
-                    required super.handler,
-                    required super.wire,
-                    required super.generalizedFrbRustBinding,
-                    required super.portManager,
-                  });
+  @protected
+  DocumentInput dco_decode_document_input(dynamic raw);
 
-                  
+  @protected
+  double dco_decode_f_32(dynamic raw);
 
-                  @protected String dco_decode_String(dynamic raw);
+  @protected
+  int dco_decode_i_32(dynamic raw);
 
-@protected DocumentInput dco_decode_document_input(dynamic raw);
+  @protected
+  List<String> dco_decode_list_String(dynamic raw);
 
-@protected double dco_decode_f_32(dynamic raw);
+  @protected
+  List<DocumentInput> dco_decode_list_document_input(dynamic raw);
 
-@protected List<String> dco_decode_list_String(dynamic raw);
+  @protected
+  Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
 
-@protected List<DocumentInput> dco_decode_list_document_input(dynamic raw);
+  @protected
+  List<SearchResult> dco_decode_list_search_result(dynamic raw);
 
-@protected Uint8List dco_decode_list_prim_u_8_strict(dynamic raw);
+  @protected
+  SearchResult dco_decode_search_result(dynamic raw);
 
-@protected List<SearchResult> dco_decode_list_search_result(dynamic raw);
+  @protected
+  BigInt dco_decode_u_64(dynamic raw);
 
-@protected SearchResult dco_decode_search_result(dynamic raw);
+  @protected
+  int dco_decode_u_8(dynamic raw);
 
-@protected BigInt dco_decode_u_64(dynamic raw);
+  @protected
+  void dco_decode_unit(dynamic raw);
 
-@protected int dco_decode_u_8(dynamic raw);
+  @protected
+  BigInt dco_decode_usize(dynamic raw);
 
-@protected void dco_decode_unit(dynamic raw);
+  @protected
+  String sse_decode_String(SseDeserializer deserializer);
 
-@protected BigInt dco_decode_usize(dynamic raw);
+  @protected
+  DictionaryType sse_decode_dictionary_type(SseDeserializer deserializer);
 
-@protected String sse_decode_String(SseDeserializer deserializer);
+  @protected
+  DocumentInput sse_decode_document_input(SseDeserializer deserializer);
 
-@protected DocumentInput sse_decode_document_input(SseDeserializer deserializer);
+  @protected
+  double sse_decode_f_32(SseDeserializer deserializer);
 
-@protected double sse_decode_f_32(SseDeserializer deserializer);
+  @protected
+  int sse_decode_i_32(SseDeserializer deserializer);
 
-@protected List<String> sse_decode_list_String(SseDeserializer deserializer);
+  @protected
+  List<String> sse_decode_list_String(SseDeserializer deserializer);
 
-@protected List<DocumentInput> sse_decode_list_document_input(SseDeserializer deserializer);
+  @protected
+  List<DocumentInput> sse_decode_list_document_input(
+    SseDeserializer deserializer,
+  );
 
-@protected Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
+  @protected
+  Uint8List sse_decode_list_prim_u_8_strict(SseDeserializer deserializer);
 
-@protected List<SearchResult> sse_decode_list_search_result(SseDeserializer deserializer);
+  @protected
+  List<SearchResult> sse_decode_list_search_result(
+    SseDeserializer deserializer,
+  );
 
-@protected SearchResult sse_decode_search_result(SseDeserializer deserializer);
+  @protected
+  SearchResult sse_decode_search_result(SseDeserializer deserializer);
 
-@protected BigInt sse_decode_u_64(SseDeserializer deserializer);
+  @protected
+  BigInt sse_decode_u_64(SseDeserializer deserializer);
 
-@protected int sse_decode_u_8(SseDeserializer deserializer);
+  @protected
+  int sse_decode_u_8(SseDeserializer deserializer);
 
-@protected void sse_decode_unit(SseDeserializer deserializer);
+  @protected
+  void sse_decode_unit(SseDeserializer deserializer);
 
-@protected BigInt sse_decode_usize(SseDeserializer deserializer);
+  @protected
+  BigInt sse_decode_usize(SseDeserializer deserializer);
 
-@protected int sse_decode_i_32(SseDeserializer deserializer);
+  @protected
+  bool sse_decode_bool(SseDeserializer deserializer);
 
-@protected bool sse_decode_bool(SseDeserializer deserializer);
+  @protected
+  void sse_encode_String(String self, SseSerializer serializer);
 
-@protected void sse_encode_String(String self, SseSerializer serializer);
+  @protected
+  void sse_encode_dictionary_type(
+    DictionaryType self,
+    SseSerializer serializer,
+  );
 
-@protected void sse_encode_document_input(DocumentInput self, SseSerializer serializer);
+  @protected
+  void sse_encode_document_input(DocumentInput self, SseSerializer serializer);
 
-@protected void sse_encode_f_32(double self, SseSerializer serializer);
+  @protected
+  void sse_encode_f_32(double self, SseSerializer serializer);
 
-@protected void sse_encode_list_String(List<String> self, SseSerializer serializer);
+  @protected
+  void sse_encode_i_32(int self, SseSerializer serializer);
 
-@protected void sse_encode_list_document_input(List<DocumentInput> self, SseSerializer serializer);
+  @protected
+  void sse_encode_list_String(List<String> self, SseSerializer serializer);
 
-@protected void sse_encode_list_prim_u_8_strict(Uint8List self, SseSerializer serializer);
+  @protected
+  void sse_encode_list_document_input(
+    List<DocumentInput> self,
+    SseSerializer serializer,
+  );
 
-@protected void sse_encode_list_search_result(List<SearchResult> self, SseSerializer serializer);
+  @protected
+  void sse_encode_list_prim_u_8_strict(
+    Uint8List self,
+    SseSerializer serializer,
+  );
 
-@protected void sse_encode_search_result(SearchResult self, SseSerializer serializer);
+  @protected
+  void sse_encode_list_search_result(
+    List<SearchResult> self,
+    SseSerializer serializer,
+  );
 
-@protected void sse_encode_u_64(BigInt self, SseSerializer serializer);
+  @protected
+  void sse_encode_search_result(SearchResult self, SseSerializer serializer);
 
-@protected void sse_encode_u_8(int self, SseSerializer serializer);
+  @protected
+  void sse_encode_u_64(BigInt self, SseSerializer serializer);
 
-@protected void sse_encode_unit(void self, SseSerializer serializer);
+  @protected
+  void sse_encode_u_8(int self, SseSerializer serializer);
 
-@protected void sse_encode_usize(BigInt self, SseSerializer serializer);
+  @protected
+  void sse_encode_unit(void self, SseSerializer serializer);
 
-@protected void sse_encode_i_32(int self, SseSerializer serializer);
+  @protected
+  void sse_encode_usize(BigInt self, SseSerializer serializer);
 
-@protected void sse_encode_bool(bool self, SseSerializer serializer);
-                }
-                
-
+  @protected
+  void sse_encode_bool(bool self, SseSerializer serializer);
+}
 
 // Section: wire_class
 
+class RustLibWire implements BaseWire {
+  factory RustLibWire.fromExternalLibrary(ExternalLibrary lib) =>
+      RustLibWire(lib.ffiDynamicLibrary);
 
-        class RustLibWire implements BaseWire {
+  /// Holds the symbol lookup function.
+  final ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName)
+  _lookup;
 
-            factory RustLibWire.fromExternalLibrary(ExternalLibrary lib) =>
-              RustLibWire(lib.ffiDynamicLibrary);
-        
-            /// Holds the symbol lookup function.
-            final ffi.Pointer<T> Function<T extends ffi.NativeType>(String symbolName)
-                _lookup;
-  
-            /// The symbols are looked up in [dynamicLibrary].
-            RustLibWire(ffi.DynamicLibrary dynamicLibrary)
-                : _lookup = dynamicLibrary.lookup;
-
-            
-        }
-        
+  /// The symbols are looked up in [dynamicLibrary].
+  RustLibWire(ffi.DynamicLibrary dynamicLibrary)
+    : _lookup = dynamicLibrary.lookup;
+}
