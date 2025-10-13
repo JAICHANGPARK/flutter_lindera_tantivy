@@ -10,7 +10,13 @@ crate-type = ["cdylib", "staticlib"]
 flutter_rust_bridge = "=2.11.1"
 tantivy = "0.25.0"
 lindera = "1.3.2"
-lindera-tantivy = { version = "1.0.3", features = ["embedded-ko-dic"] }
+lindera-tantivy = { version = "1.0.3", features = [
+    "embedded-ipadic",
+#    "embedded-ipadic-neologd",
+    "embedded-unidic",
+    "embedded-ko-dic",
+    "embedded-cc-cedict"
+] }
 serde_json = "1.0"
 
 [lints.rust]
