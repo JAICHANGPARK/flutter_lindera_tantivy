@@ -45,7 +45,10 @@ class _SearchPageState extends ConsumerState<SearchPage> {
 
       debugPrint('인덱스 경로: $indexPath');
 
-      final initResult = initializeSearchIndexWithPath(indexPath: indexPath);
+      final initResult = initializeSearchIndexWithPath(
+        dictionaryType: DictionaryType.korean,
+        indexPath: indexPath,
+      );
       debugPrint(initResult);
 
       await _updateDocumentCount();
