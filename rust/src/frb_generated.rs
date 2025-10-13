@@ -341,9 +341,11 @@ fn wire__crate__api__search__initialize_search_index_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_dictionary_type =
+                <crate::api::search::DictionaryType>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, String>((move || {
-                let output_ok = crate::api::search::initialize_search_index()?;
+                let output_ok = crate::api::search::initialize_search_index(api_dictionary_type)?;
                 Ok(output_ok)
             })())
         },
@@ -370,11 +372,15 @@ fn wire__crate__api__search__initialize_search_index_with_path_impl(
             };
             let mut deserializer =
                 flutter_rust_bridge::for_generated::SseDeserializer::new(message);
+            let api_dictionary_type =
+                <crate::api::search::DictionaryType>::sse_decode(&mut deserializer);
             let api_index_path = <String>::sse_decode(&mut deserializer);
             deserializer.end();
             transform_result_sse::<_, String>((move || {
-                let output_ok =
-                    crate::api::search::initialize_search_index_with_path(api_index_path)?;
+                let output_ok = crate::api::search::initialize_search_index_with_path(
+                    api_dictionary_type,
+                    api_index_path,
+                )?;
                 Ok(output_ok)
             })())
         },
@@ -460,6 +466,20 @@ impl SseDecode for String {
     }
 }
 
+impl SseDecode for crate::api::search::DictionaryType {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        let mut inner = <i32>::sse_decode(deserializer);
+        return match inner {
+            0 => crate::api::search::DictionaryType::Korean,
+            1 => crate::api::search::DictionaryType::JapaneseIpadic,
+            2 => crate::api::search::DictionaryType::JapaneseUnidic,
+            3 => crate::api::search::DictionaryType::Chinese,
+            _ => unreachable!("Invalid variant for DictionaryType: {}", inner),
+        };
+    }
+}
+
 impl SseDecode for crate::api::search::DocumentInput {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -480,6 +500,13 @@ impl SseDecode for f32 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
         deserializer.cursor.read_f32::<NativeEndian>().unwrap()
+    }
+}
+
+impl SseDecode for i32 {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
+        deserializer.cursor.read_i32::<NativeEndian>().unwrap()
     }
 }
 
@@ -577,13 +604,6 @@ impl SseDecode for usize {
     }
 }
 
-impl SseDecode for i32 {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
-        deserializer.cursor.read_i32::<NativeEndian>().unwrap()
-    }
-}
-
 impl SseDecode for bool {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_decode(deserializer: &mut flutter_rust_bridge::for_generated::SseDeserializer) -> Self {
@@ -635,6 +655,29 @@ fn pde_ffi_dispatcher_sync_impl(
 
 // Section: rust2dart
 
+// Codec=Dco (DartCObject based), see doc to use other codecs
+impl flutter_rust_bridge::IntoDart for crate::api::search::DictionaryType {
+    fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
+        match self {
+            Self::Korean => 0.into_dart(),
+            Self::JapaneseIpadic => 1.into_dart(),
+            Self::JapaneseUnidic => 2.into_dart(),
+            Self::Chinese => 3.into_dart(),
+            _ => unreachable!(),
+        }
+    }
+}
+impl flutter_rust_bridge::for_generated::IntoDartExceptPrimitive
+    for crate::api::search::DictionaryType
+{
+}
+impl flutter_rust_bridge::IntoIntoDart<crate::api::search::DictionaryType>
+    for crate::api::search::DictionaryType
+{
+    fn into_into_dart(self) -> crate::api::search::DictionaryType {
+        self
+    }
+}
 // Codec=Dco (DartCObject based), see doc to use other codecs
 impl flutter_rust_bridge::IntoDart for crate::api::search::DocumentInput {
     fn into_dart(self) -> flutter_rust_bridge::for_generated::DartAbi {
@@ -690,6 +733,24 @@ impl SseEncode for String {
     }
 }
 
+impl SseEncode for crate::api::search::DictionaryType {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        <i32>::sse_encode(
+            match self {
+                crate::api::search::DictionaryType::Korean => 0,
+                crate::api::search::DictionaryType::JapaneseIpadic => 1,
+                crate::api::search::DictionaryType::JapaneseUnidic => 2,
+                crate::api::search::DictionaryType::Chinese => 3,
+                _ => {
+                    unimplemented!("");
+                }
+            },
+            serializer,
+        );
+    }
+}
+
 impl SseEncode for crate::api::search::DocumentInput {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
@@ -704,6 +765,13 @@ impl SseEncode for f32 {
     // Codec=Sse (Serialization based), see doc to use other codecs
     fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
         serializer.cursor.write_f32::<NativeEndian>(self).unwrap();
+    }
+}
+
+impl SseEncode for i32 {
+    // Codec=Sse (Serialization based), see doc to use other codecs
+    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
+        serializer.cursor.write_i32::<NativeEndian>(self).unwrap();
     }
 }
 
@@ -784,13 +852,6 @@ impl SseEncode for usize {
             .cursor
             .write_u64::<NativeEndian>(self as _)
             .unwrap();
-    }
-}
-
-impl SseEncode for i32 {
-    // Codec=Sse (Serialization based), see doc to use other codecs
-    fn sse_encode(self, serializer: &mut flutter_rust_bridge::for_generated::SseSerializer) {
-        serializer.cursor.write_i32::<NativeEndian>(self).unwrap();
     }
 }
 
