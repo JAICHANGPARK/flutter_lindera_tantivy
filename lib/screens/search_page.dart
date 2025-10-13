@@ -6,6 +6,7 @@ import 'package:tantivy_flutter_app/l10n/app_localizations.dart';
 import 'package:tantivy_flutter_app/screens/benchmark_page.dart';
 import 'package:tantivy_flutter_app/services/document_loader_service.dart';
 import 'package:tantivy_flutter_app/src/rust/api/search.dart';
+import 'package:tantivy_flutter_app/widgets/dictionary_selector.dart';
 import 'package:tantivy_flutter_app/widgets/language_selector.dart';
 import 'package:tantivy_flutter_app/widgets/search_result_card.dart';
 import 'package:tantivy_flutter_app/widgets/dialogs/add_document_dialog.dart';
@@ -31,6 +32,15 @@ class _SearchPageState extends ConsumerState<SearchPage> {
   void initState() {
     super.initState();
     _initializeIndex();
+
+    // DictionarySelector 변경 감지
+    ref.listenManual(dictionaryTypeProvider, (previous, next) {
+      print(previous);
+      print(next);
+      if (previous != next) {
+        _initializeIndex();
+      }
+    });
   }
 
   Future<void> _initializeIndex() async {
@@ -45,8 +55,9 @@ class _SearchPageState extends ConsumerState<SearchPage> {
 
       debugPrint('인덱스 경로: $indexPath');
 
+      final dictionaryType = ref.read(dictionaryTypeProvider);
       final initResult = initializeSearchIndexWithPath(
-        dictionaryType: DictionaryType.korean,
+        dictionaryType: dictionaryType,
         indexPath: indexPath,
       );
       debugPrint(initResult);
@@ -325,6 +336,7 @@ class _SearchPageState extends ConsumerState<SearchPage> {
         title: Text('🔍 ${l10n.appTitle}'),
         elevation: 2,
         actions: [
+          const DictionarySelector(),
           const ThemeSelector(),
           const LanguageSelector(),
 
