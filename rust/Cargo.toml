@@ -9,10 +9,10 @@ crate-type = ["cdylib", "staticlib"]
 [dependencies]
 flutter_rust_bridge = "=2.11.1"
 tantivy = "0.25.0"
-lindera = "1.3.2"
-lindera-tantivy = { version = "1.0.3", features = [
+lindera = "1.4.1"
+lindera-tantivy = { version = "1.1.0", features = [
     "embedded-ipadic",
-#    "embedded-ipadic-neologd",
+    #    "embedded-ipadic-neologd",
     "embedded-unidic",
     "embedded-ko-dic",
     "embedded-cc-cedict"
