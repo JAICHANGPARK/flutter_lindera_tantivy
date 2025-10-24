@@ -1171,17 +1171,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "io-uring"
-version = "0.7.10"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "046fa2d4d00aea763528b4950358d0ead425372445dc8ff86312b3c69ff7727b"
-dependencies = [
- "bitflags 2.9.4",
- "cfg-if",
- "libc",
-]
-
-[[package]]
 name = "ipnet"
 version = "2.11.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1278,9 +1267,9 @@ dependencies = [
 
 [[package]]
 name = "lindera"
-version = "1.3.2"
+version = "1.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3a7a4c5973b778eb6cfe2b78e33840c32601e7fddcc9379d764171ea10600337"
+checksum = "f0e109baf46c2494539663466a49d54bd62f655a4356757269b72d1e1019ff2c"
 dependencies = [
  "anyhow",
  "bincode",
@@ -1310,9 +1299,9 @@ dependencies = [
 
 [[package]]
 name = "lindera-cc-cedict"
-version = "1.3.2"
+version = "1.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a3f9ca6f3c2d0dd3493eca7917d712a9b2a6ea0a60f0e518d3c5710eee0ab719"
+checksum = "965ef21c68d3f5453076366a58d05c154e639a5d1e9b0d86a048a6a3486fb1cc"
 dependencies = [
  "anyhow",
  "bincode",
@@ -1326,9 +1315,9 @@ dependencies = [
 
 [[package]]
 name = "lindera-dictionary"
-version = "1.3.2"
+version = "1.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "88c7e47e42a6831f6a12eca3b91c4ef2c9ab2425c6d6c5ffb51abcd0fec2749e"
+checksum = "d493e407b18951da7852d2b021b1f7e001a2963accb17a321c8fd48b60a9e343"
 dependencies = [
  "anyhow",
  "bincode",
@@ -1360,9 +1349,9 @@ dependencies = [
 
 [[package]]
 name = "lindera-ipadic"
-version = "1.3.2"
+version = "1.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ddc56f00c12483d36cbfd0d5fd51f040a40729cbfe9976da47a77795c2af8220"
+checksum = "567746f82c01052e05539f2731ce2ad62eddebe5ae96453e9534a87bc9cfafc9"
 dependencies = [
  "anyhow",
  "bincode",
@@ -1376,9 +1365,9 @@ dependencies = [
 
 [[package]]
 name = "lindera-ipadic-neologd"
-version = "1.3.2"
+version = "1.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "211486971de259f1cb3aa9539f08df6bea7a88bf82280f79614717f3b254899a"
+checksum = "350f17ced5cbf2964ee29ddef1094703fd1df7c20d464dec6106b7b7ee038030"
 dependencies = [
  "anyhow",
  "bincode",
@@ -1392,9 +1381,9 @@ dependencies = [
 
 [[package]]
 name = "lindera-ko-dic"
-version = "1.3.2"
+version = "1.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "41ccead1eb20dfbcbd0ea45e34a26a32257dd81b5fcd10fb1fb17cf3d78c856f"
+checksum = "d2dda2995055967b409c4d1f311b7db796a3279c78607838325f8892a1542960"
 dependencies = [
  "anyhow",
  "bincode",
@@ -1408,9 +1397,9 @@ dependencies = [
 
 [[package]]
 name = "lindera-tantivy"
-version = "1.0.3"
+version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "a74fdd1eea17c08229fdc9b2fbb34c72e1385350e1d49fffd5d9e6d53897c8f4"
+checksum = "4fd808f046794a83051602ef44865a313bad4b9c834c83e3e4de8686d506461a"
 dependencies = [
  "lindera",
  "tantivy",
@@ -1419,9 +1408,9 @@ dependencies = [
 
 [[package]]
 name = "lindera-unidic"
-version = "1.3.2"
+version = "1.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "07d87dd63970ac24bc41024900101366c2bf9f54e5dbd2c3139d2bf0342a1db8"
+checksum = "e6a03bdf3acbd493e95ac182fef6194c09556a04dcbebbaeddca47d5ae6ec5f6"
 dependencies = [
  "anyhow",
  "bincode",
@@ -1896,9 +1885,9 @@ dependencies = [
 
 [[package]]
 name = "regex"
-version = "1.11.3"
+version = "1.12.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "8b5288124840bee7b386bc413c487869b360b2b4ec421ea56425128692f2a82c"
+checksum = "843bc0191f75f3e22651ae5f1e72939ab2f72a4bc30fa80a066bd66edefc24d4"
 dependencies = [
  "aho-corasick",
  "memchr",
@@ -1908,9 +1897,9 @@ dependencies = [
 
 [[package]]
 name = "regex-automata"
-version = "0.4.11"
+version = "0.4.13"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "833eb9ce86d40ef33cb1306d8accf7bc8ec2bfea4355cbdebb3df68b40925cad"
+checksum = "5276caf25ac86c8d810222b3dbb938e512c55c6831a10f3e6ed1c93b84041f1c"
 dependencies = [
  "aho-corasick",
  "memchr",
@@ -1925,9 +1914,9 @@ checksum = "caf4aa5b0f434c91fe5c7f1ecb6a5ece2130b02ad2a590589dda5146df959001"
 
 [[package]]
 name = "reqwest"
-version = "0.12.23"
+version = "0.12.24"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d429f34c8092b2d42c7c93cec323bb4adeb7c67698f70839adec842ec10c7ceb"
+checksum = "9d0946410b9f7b082a427e4ef5c8ff541a88b357bc6c637c40db3a68ac70a36f"
 dependencies = [
  "base64",
  "bytes",
@@ -2515,27 +2504,24 @@ checksum = "1f3ccbac311fea05f86f61904b462b55fb3df8837a366dfc601a0161d0532f20"
 
 [[package]]
 name = "tokio"
-version = "1.47.1"
+version = "1.48.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "89e49afdadebb872d3145a5638b59eb0691ea23e46ca484037cfab3b76b95038"
+checksum = "ff360e02eab121e0bc37a2d3b4d4dc622e6eda3a8e5253d5435ecf5bd4c68408"
 dependencies = [
- "backtrace",
  "bytes",
- "io-uring",
  "libc",
  "mio",
  "pin-project-lite",
- "slab",
  "socket2",
  "tokio-macros",
- "windows-sys 0.59.0",
+ "windows-sys 0.61.2",
 ]
 
 [[package]]
 name = "tokio-macros"
-version = "2.5.0"
+version = "2.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6e06d43f1345a3bcd39f6a56dbb7dcab2ba47e68e8ac134855e7e2bdbaf8cab8"
+checksum = "af407857209536a95c8e56f8231ef2c2e2aff839b22e07a1ffcbc617e9db9fa5"
 dependencies = [
  "proc-macro2",
  "quote",
