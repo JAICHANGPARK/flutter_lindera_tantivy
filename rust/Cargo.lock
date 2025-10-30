@@ -1397,9 +1397,9 @@ dependencies = [
 
 [[package]]
 name = "lindera-tantivy"
-version = "1.1.0"
+version = "1.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4fd808f046794a83051602ef44865a313bad4b9c834c83e3e4de8686d506461a"
+checksum = "7d14342a92ae1630c5f640aa7111b8e7497084c74e4356298ad7c55dfa58d15d"
 dependencies = [
  "lindera",
  "tantivy",

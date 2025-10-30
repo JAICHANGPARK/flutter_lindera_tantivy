@@ -565,7 +565,7 @@ pub fn search_documents(query_str: String, limit: usize) -> Result<Vec<SearchRes
                             } else if let Some(b) = v.as_bool() {
                                 serde_json::Value::Bool(b)
                             } else if let Some(arr) = v.as_array() {
-                                // 배열 처리 추가! ✅
+                                // 배열 처리 추가!
                                 // CompactDocArrayIter는 이미 iterator이므로 collect()로 바로 변환
                                 let array_values: Vec<serde_json::Value> = arr
                                     .map(|item| {
