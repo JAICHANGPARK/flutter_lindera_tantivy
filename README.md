@@ -1,6 +1,6 @@
 # flutter_lindera_tantivy
 
-English | [日本語](README.ja.md) | [한국어](README.ko.md) | [中文](README.zh.md)
+English | [日本語](https://github.com/JAICHANGPARK/flutter_lindera_tantivy/blob/main/README.ja.md) | [한국어](https://github.com/JAICHANGPARK/flutter_lindera_tantivy/blob/main/README.ko.md) | [中文](https://github.com/JAICHANGPARK/flutter_lindera_tantivy/blob/main/README.zh.md)
 
 A Flutter FFI plugin that provides high-performance full-text search capabilities powered by Tantivy search engine and Lindera morphological analysis. Supports Korean, Japanese (IPADIC/UniDic), and Chinese text with embedded dictionaries.
 
