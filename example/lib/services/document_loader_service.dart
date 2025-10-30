@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 
 import '../models/document_data.dart';
-import '../src/rust/api/search.dart';
+import 'package:flutter_lindera_tantivy/flutter_lindera_tantivy.dart';
 
 /// 문서 로더 서비스 클래스
 class DocumentLoaderService {

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../l10n/app_localizations.dart';
-import '../../src/rust/api/search.dart';
+import 'package:flutter_lindera_tantivy/flutter_lindera_tantivy.dart';
+
 
 class AddDocumentDialog extends StatefulWidget {
   final VoidCallback onDocumentAdded;

@@ -5,7 +5,7 @@ import 'package:path_provider/path_provider.dart';
 
 import '../l10n/app_localizations.dart';
 import '../services/document_loader_service.dart';
-import '../src/rust/api/search.dart';
+
 import '../widgets/dialogs/add_document_dialog.dart';
 import '../widgets/dictionary_selector.dart';
 import '../widgets/language_selector.dart';
@@ -13,7 +13,7 @@ import '../widgets/search_result_card.dart';
 import '../widgets/theme_selector.dart';
 import '../widgets/web_platform_unsupported.dart';
 import 'benchmark_page.dart';
-
+import 'package:flutter_lindera_tantivy/flutter_lindera_tantivy.dart';
 class SearchPage extends ConsumerStatefulWidget {
   const SearchPage({super.key});
 

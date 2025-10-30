@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'dart:convert';
-
-import '../src/rust/api/search.dart';
+import 'package:flutter_lindera_tantivy/flutter_lindera_tantivy.dart';
 
 class SearchResultCard extends StatelessWidget {
   final SearchResult result;

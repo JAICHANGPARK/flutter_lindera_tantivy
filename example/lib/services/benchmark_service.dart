@@ -1,7 +1,6 @@
 import 'dart:math';
 import 'package:flutter/foundation.dart';
-import '../src/rust/api/search.dart';
-
+import 'package:flutter_lindera_tantivy/flutter_lindera_tantivy.dart';
 class BenchmarkResult {
   final int documentCount;
   final Duration indexingTime;

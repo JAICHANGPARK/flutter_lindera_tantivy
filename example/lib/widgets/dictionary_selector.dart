@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
-
-import '../src/rust/api/search.dart';
+import 'package:flutter_lindera_tantivy/flutter_lindera_tantivy.dart';
 
 // 선택된 사전 타입을 관리하는 Provider
 final dictionaryTypeProvider = StateProvider<DictionaryType>(
