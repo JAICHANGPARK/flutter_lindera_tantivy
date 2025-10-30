@@ -1,202 +1,122 @@
-# Flutter Lindera Tantivy
+# flutter_lindera_tantivy
 
-A high-performance, full-text search application built with Flutter and Rust, featuring Korean language support using Lindera tokenizer and Tantivy search engine.
+English | [日本語](README.ja.md) | [한국어](README.ko.md) | [中文](README.zh.md)
 
-[한국어](README.ko.md) | [日本語](README.ja.md)
+A Flutter FFI plugin that provides high-performance full-text search capabilities powered by Tantivy search engine and Lindera morphological analysis. Supports Korean, Japanese (IPADIC/UniDic), and Chinese text with embedded dictionaries.
 
-## Features
+### Features
 
-- **🔍 Full-Text Search**: Powered by Tantivy search engine with BM25 ranking
-- **🇰🇷 Korean Language Support**: Advanced Korean text analysis using Lindera tokenizer
-- **⚡ High Performance**: Rust-powered backend via Flutter Rust Bridge (FFI)
-- **🌍 Multilingual UI**: Support for Korean, English, Japanese, and Chinese
-- **🎨 Theme Support**: Light mode, Dark mode, and System theme
-- **📱 Cross-Platform**: Supports macOS, Windows, Linux, iOS, and Android
-- **💾 Persistent Storage**: Local document indexing with automatic persistence
-- **📊 Performance Benchmark**: Built-in tool to measure indexing and search performance with up to 10,000 documents
+- 🚀 **High-Performance Search**: Built on Rust's Tantivy search engine
+- 🔍 **Morphological Analysis**: Powered by Lindera for accurate Asian language tokenization
+- 🌏 **Multi-Language Support**: Korean, Japanese (IPADIC/UniDic), and Chinese
+- 📱 **Cross-Platform**: Android, iOS, Linux, macOS, and Windows
+- 💾 **Flexible Storage**: In-memory or disk-based index storage
+- ⚡ **Native Performance**: Direct Rust FFI bindings via flutter_rust_bridge
 
-## Technology Stack
+### Supported Languages
 
-### Frontend
-- **Flutter**: Cross-platform UI framework
-- **Riverpod**: State management
-- **Material 3**: Modern design system
-
-### Backend
-- **Rust**: High-performance search engine
-- **Tantivy**: Full-text search library
-- **Lindera**: Multilingual morphological analyzer
-- **flutter_rust_bridge**: FFI bridge between Flutter and Rust
-
-## Getting Started
-
-### Prerequisites
-
-- Flutter SDK (^3.9.2)
-- Rust toolchain
-- Platform-specific development tools:
-  - macOS: Xcode
-  - Windows: Visual Studio with C++ support
-  - Linux: GCC/Clang
-  - iOS: Xcode
-  - Android: Android Studio
+- **Korean**: Embedded Ko-dic dictionary
+- **Japanese (IPADIC)**: IPA dictionary for modern Japanese
+- **Japanese (UniDic)**: UniDic dictionary for contemporary written Japanese
+- **Chinese**: CC-CEDICT dictionary
 
 ### Installation
 
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/flutter_lindera_tantivy.git
-cd flutter_lindera_tantivy
+Add this to your `pubspec.yaml`:
+
+```yaml
+dependencies:
+  flutter_lindera_tantivy: ^0.0.1
 ```
 
-2. Install Flutter dependencies:
-```bash
-flutter pub get
+### Quick Start
+
+```dart
+import 'package:flutter_lindera_tantivy/flutter_lindera_tantivy.dart';
+
+// Initialize Rust library
+await RustLib.init();
+
+// Initialize search index with Korean dictionary
+initializeSearchIndex(dictionaryType: DictionaryType.korean);
+
+// Add documents
+addDocument(
+  title: "Flutter Tutorial",
+  body: "Learn Flutter development",
+  metadataJson: '{"category": "tutorial"}',
+);
+
+// Search documents
+final results = searchDocuments(
+  queryStr: "Flutter",
+  limit: BigInt.from(10),
+);
+
+for (var result in results) {
+  print('${result.title}: ${result.score}');
+}
 ```
 
-3. Generate code:
-```bash
-flutter pub run build_runner build --delete-conflicting-outputs
+### API Reference
+
+#### Initialize Index
+
+```dart
+// In-memory index
+String initializeSearchIndex({required DictionaryType dictionaryType})
+
+// Disk-based index
+String initializeSearchIndexWithPath({
+  required DictionaryType dictionaryType,
+  required String indexPath,
+})
 ```
 
-4. Run the app:
-```bash
-# macOS
-flutter run -d macos
+#### Document Management
 
-# Windows
-flutter run -d windows
+```dart
+// Add single document
+String addDocument({
+  required String title,
+  required String body,
+  required String metadataJson,
+})
 
-# Linux
-flutter run -d linux
+// Add multiple documents
+String addDocuments({required List<DocumentInput> documents})
 
-# iOS (requires physical device or simulator)
-flutter run -d ios
+// Update document
+String updateDocument({
+  required String id,
+  required String title,
+  required String body,
+  required String metadataJson,
+})
 
-# Android
-flutter run -d android
+// Delete document(s)
+String deleteDocument({required String id})
+String deleteDocuments({required List<String> ids})
+String clearAllDocuments()
+
+// Get document count
+BigInt getDocumentCount()
 ```
 
-## Usage
+#### Search
 
-### Adding Documents
-
-1. Click the **"Add Document"** button (floating action button)
-2. Enter the title and content
-3. Optionally add metadata in JSON format
-4. Click **"Add"** to index the document
-
-### Searching Documents
-
-1. Enter your search query in the search bar
-2. Press Enter or click the **"Search"** button
-3. Results are ranked by relevance using BM25 algorithm
-
-### Managing Documents
-
-- **Edit**: Click the edit button on any search result card
-- **Delete**: Click the delete button on any search result card
-- **Load from JSON**: Use the menu to bulk import documents from JSON file
-- **Delete All**: Clear all indexed documents (requires confirmation)
-
-### Theme Customization
-
-Click the theme icon in the app bar to choose:
-- 🌞 Light Mode
-- 🌙 Dark Mode
-- ⚙️ System Mode (follows system settings)
-
-### Language Selection
-
-Click the language icon in the app bar to switch between:
-- 🇰🇷 Korean
-- 🇺🇸 English
-- 🇯🇵 Japanese
-- 🇨🇳 Chinese
-
-### Performance Benchmark
-
-Access the benchmark tool from the menu to measure search performance:
-
-1. Select the **"Performance Benchmark"** option from the menu
-2. Choose the test language (Korean, English, Japanese, Chinese)
-3. Adjust the number of documents using the slider (100 - 10,000)
-4. Click **"Run Benchmark"** to start the test
-5. View detailed results including:
-   - Total indexing time
-   - Average time per document
-   - Average search time per query
-   - Individual query performance metrics
-
-The benchmark feature helps you:
-- Test search engine performance with large datasets
-- Compare performance across different languages
-- Measure indexing and search speeds
-- Optimize your search configuration
-
-## Architecture
-
-```
-lib/
-├── l10n/                 # Localization files
-├── models/              # Data models
-├── providers/           # Riverpod state providers
-├── screens/             # App screens
-├── services/            # Business logic
-├── widgets/             # Reusable UI components
-└── src/rust/            # Generated Rust FFI bindings
-
-rust/
-└── src/
-    └── api/             # Rust search API
+```dart
+List<SearchResult> searchDocuments({
+  required String queryStr,
+  required BigInt limit,
+})
 ```
 
-## Platform Support
+### License
 
-| Platform | Supported | Notes |
-|----------|-----------|-------|
-| macOS    | ✅ | Full support |
-| Windows  | ✅ | Full support |
-| Linux    | ✅ | Full support |
-| iOS      | ✅ | Full support |
-| Android  | ✅ | Full support |
-| Web      | ❌ | Not supported (requires FFI) |
+See [LICENSE](LICENSE) file.
 
-## Dependencies
+### Repository
 
-### Flutter Packages
-- `flutter_riverpod`: State management
-- `riverpod_annotation`: Code generation for Riverpod
-- `flutter_rust_bridge`: Rust FFI integration
-- `path_provider`: Local storage access
-- `shared_preferences`: Persistent key-value storage
+https://github.com/JAICHANGPARK/flutter_lindera_tantivy
 
-### Rust Crates
-- `tantivy`: Full-text search engine
-- `lindera`: Morphological analyzer
-- `lindera-tantivy`: Tantivy integration for Lindera
-- `serde_json`: JSON serialization
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- [Tantivy](https://github.com/tantivy-search/tantivy) - Fast full-text search engine library
-- [Lindera](https://github.com/lindera-morphology/lindera) - Morphological analyzer
-- [Flutter Rust Bridge](https://github.com/fzyzcjy/flutter_rust_bridge) - High-level FFI bridge
-
-## Contact
-
-Project Link: [https://github.com/yourusername/flutter_lindera_tantivy](https://github.com/yourusername/flutter_lindera_tantivy)

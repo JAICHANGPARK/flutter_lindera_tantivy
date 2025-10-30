@@ -71,7 +71,7 @@ class RustLib extends BaseEntrypoint<RustLibApi, RustLibApiImpl, RustLibWire> {
 
   static const kDefaultExternalLibraryLoaderConfig =
       ExternalLibraryLoaderConfig(
-        stem: 'rust_lib_tantivy_flutter_app',
+        stem: 'flutter_lindera_tantivy',
         ioDirectory: 'rust/target/release/',
         webPrefix: 'pkg/',
       );
