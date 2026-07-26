@@ -1,55 +1,50 @@
 # flutter_lindera_tantivy
 
-[English](README.md) | 日本語 | [한국어](README.ko.md) | [中文](README.zh.md)
+[English](https://github.com/JAICHANGPARK/flutter_lindera_tantivy/blob/main/README.md) | 日本語 | [한국어](https://github.com/JAICHANGPARK/flutter_lindera_tantivy/blob/main/README.ko.md) | [中文](https://github.com/JAICHANGPARK/flutter_lindera_tantivy/blob/main/README.zh.md)
 
-Tantivyサーチエンジンとlindera形態素解析を活用した高性能全文検索機能を提供するFlutter FFIプラグインです。韓国語、日本語（IPADIC/UniDic）、中国語のテキストを埋め込み辞書でサポートします。
+Tantivy検索エンジンとLindera 4.0形態素解析器を搭載した、高速フルテキスト検索および形態素解析を提供するFlutter FFIプラグインです。組み込み辞書により、日本語（IPADIC/UniDic）、韓国語、中国語に対応しています。
 
 ### 主な機能
 
-- 🚀 **高性能検索**: RustのTantivyサーチエンジンを基盤
-- 🔍 **形態素解析**: Linderaによる正確なアジア言語のトークン化
-- 🌏 **多言語サポート**: 韓国語、日本語（IPADIC/UniDic）、中国語
-- 📱 **クロスプラットフォーム**: Android、iOS、Linux、macOS、Windows
-- 💾 **柔軟なストレージ**: メモリ内またはディスクベースのインデックス保存
-- ⚡ **ネイティブパフォーマンス**: flutter_rust_bridge経由の直接Rust FFIバインディング
+- 🚀 **高速全文検索**: Rust製Tantivy（v0.25）およびLindera（v4.0）を採用
+- 🔍 **単独の形態素解析**: CJKテキストを単語に分割、品사（POS）情報を詳細取得
+- 🌏 **多言語サポート**: 日本語（IPADIC/UniDic）、韓国語（Ko-dic）、中国語（CC-CEDICT）
+- 📱 **クロスプラットフォーム**: Android、iOS、Linux、macOS、Windows対応
+- 💾 **柔軟なストレージ**: インメモリ（RAM）およびディスクストレージをサポート
+- ⚡ **ネイティブパフォーマンス**: `flutter_rust_bridge`によるダイレクトRust FFIバインディング
 
-### サポート言語
+### インストール方法
 
-- **韓国語**: Ko-dic辞書を内蔵
-- **日本語（IPADIC）**: 現代日本語向けIPA辞書
-- **日本語（UniDic）**: 現代書き言葉向けUniDic辞書
-- **中国語**: CC-CEDICT辞書
-
-### インストール
-
-`pubspec.yaml`に追加：
+`pubspec.yaml`に追加してください:
 
 ```yaml
 dependencies:
-  flutter_lindera_tantivy: ^0.0.1
+  flutter_lindera_tantivy: ^2026.7.26
 ```
 
 ### クイックスタート
 
+#### 1. 全文検索
+
 ```dart
 import 'package:flutter_lindera_tantivy/flutter_lindera_tantivy.dart';
 
-// Rustライブラリを初期化
+// Rustライブラリの初期化
 await RustLib.init();
 
-// 日本語IPADIC辞書で検索インデックスを初期化
+// 日本語（IPADIC）辞書で検索インデックスを初期化
 initializeSearchIndex(dictionaryType: DictionaryType.japaneseIpadic);
 
 // ドキュメントを追加
 addDocument(
-  title: "Flutterチュートリアル",
-  body: "Flutter開発を学ぶ",
+  title: "Flutter チュートリアル",
+  body: "Linderaを活用したFlutter全文検索開発",
   metadataJson: '{"category": "tutorial"}',
 );
 
-// ドキュメントを検索
+// 検索を実行
 final results = searchDocuments(
-  queryStr: "Flutter",
+  queryStr: "検索",
   limit: BigInt.from(10),
 );
 
@@ -58,64 +53,31 @@ for (var result in results) {
 }
 ```
 
-### API リファレンス
-
-#### インデックス初期化
+#### 2. 形態素解析（単独利用）
 
 ```dart
-// メモリ内インデックス
-String initializeSearchIndex({required DictionaryType dictionaryType})
+import 'package:flutter_lindera_tantivy/flutter_lindera_tantivy.dart';
 
-// ディスクベースインデックス
-String initializeSearchIndexWithPath({
-  required DictionaryType dictionaryType,
-  required String indexPath,
-})
+// テキストの分節・トークン化
+final tokens = tokenizeText(
+  dictionaryType: DictionaryType.japaneseIpadic,
+  text: "関西国際空港に行きます",
+  mode: TokenMode.normal,
+);
+print(tokens); // ['関西', '国際', '空港', 'に', '行き', 'ます']
+
+// 品詞情報を含む詳細解析
+final details = tokenizeTextDetailed(
+  dictionaryType: DictionaryType.japaneseIpadic,
+  text: "関西国際空港",
+  mode: TokenMode.normal,
+);
+
+for (var token in details) {
+  print('${token.surface} [${token.pos}]: ${token.details.join(", ")}');
+}
 ```
 
-#### ドキュメント管理
+### 라이선스 / License
 
-```dart
-// 単一ドキュメント追加
-String addDocument({
-  required String title,
-  required String body,
-  required String metadataJson,
-})
-
-// 複数ドキュメント追加
-String addDocuments({required List<DocumentInput> documents})
-
-// ドキュメント更新
-String updateDocument({
-  required String id,
-  required String title,
-  required String body,
-  required String metadataJson,
-})
-
-// ドキュメント削除
-String deleteDocument({required String id})
-String deleteDocuments({required List<String> ids})
-String clearAllDocuments()
-
-// ドキュメント数取得
-BigInt getDocumentCount()
-```
-
-#### 検索
-
-```dart
-List<SearchResult> searchDocuments({
-  required String queryStr,
-  required BigInt limit,
-})
-```
-
-### ライセンス
-
-[LICENSE](LICENSE)ファイルを参照してください。
-
-### リポジトリ
-
-https://github.com/JAICHANGPARK/flutter_lindera_tantivy
+[LICENSE](LICENSE) ファイルをご参照ください。
