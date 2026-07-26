@@ -1,3 +1,18 @@
+## [2026.7.26] - 2026-07-26
+
+### Added
+- New standalone Morphological Analysis APIs: `tokenizeText` and `tokenizeTextDetailed`.
+- Added `TokenMode` (`Normal`, `Decompose`) parameter for mode-based tokenization.
+- Added `TokenDetail` data structure containing surface, POS (Part of Speech), and detailed morphological attributes.
+- Added comprehensive Rust unit tests covering Korean, Japanese, and Chinese tokenization.
+
+### Changed
+- Upgraded `lindera` dependency to `4.0.1` (major version upgrade).
+- Upgraded `lindera-tantivy` dependency to `4.0.0` (major version upgrade).
+- Updated feature flags from `embedded-*` to `embed-*` (`embed-ipadic`, `embed-unidic`, `embed-ko-dic`, `embed-cc-cedict`).
+- Upgraded `flutter_rust_bridge` to `^2.12.0`.
+- Changed version scheme to date-based versioning (`2026.7.26`).
+
 ## 0.1.0 - 2025-11-10
 
 ### Added

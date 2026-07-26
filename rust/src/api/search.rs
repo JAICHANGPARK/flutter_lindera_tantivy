@@ -9,11 +9,29 @@ use tantivy::{doc, Index, TantivyDocument};
 use lindera::dictionary::load_dictionary;
 use lindera::mode::Mode;
 use lindera::segmenter::Segmenter;
+use lindera::tokenizer::Tokenizer;
 use lindera_tantivy::tokenizer::LinderaTokenizer;
 
 use serde_json::Value as JsonValue;
 use std::sync::Mutex;
 use std::path::Path;
+
+/// 형태소 분석 토큰화 모드 (Normal / Decompose)
+#[derive(Clone, Debug)]
+#[flutter_rust_bridge::frb]
+pub enum TokenMode {
+    Normal,
+    Decompose,
+}
+
+/// 형태소 분석 토큰 상세 정보
+#[derive(Clone, Debug)]
+#[flutter_rust_bridge::frb]
+pub struct TokenDetail {
+    pub surface: String,
+    pub pos: String,
+    pub details: Vec<String>,
+}
 
 // 사전 타입 enum
 #[derive(Clone, Debug)]
@@ -26,7 +44,7 @@ pub enum DictionaryType {
 }
 
 impl DictionaryType {
-    fn to_embedded_path(&self) -> &'static str {
+    pub fn to_embedded_path(&self) -> &'static str {
         match self {
             DictionaryType::Korean => "embedded://ko-dic",
             DictionaryType::JapaneseIpadic => "embedded://ipadic",
@@ -36,7 +54,7 @@ impl DictionaryType {
         }
     }
 
-    fn to_tokenizer_name(&self) -> &'static str {
+    pub fn to_tokenizer_name(&self) -> &'static str {
         match self {
             DictionaryType::Korean => "lang_ko",
             DictionaryType::JapaneseIpadic => "lang_ja_ipadic",
@@ -188,6 +206,55 @@ pub fn initialize_search_index(dictionary_type: DictionaryType) -> Result<String
     });
 
     Ok("검색 인덱스가 초기화되었습니다.".to_string())
+}
+
+/// 텍스트를 형태소 분석하여 토큰표형(surface) 리스트로 반환합니다
+#[flutter_rust_bridge::frb(sync)]
+pub fn tokenize_text(
+    dictionary_type: DictionaryType,
+    text: String,
+    mode: TokenMode,
+) -> Result<Vec<String>, String> {
+    let mode_val = match mode {
+        TokenMode::Decompose => Mode::Decompose(lindera::mode::Penalty::default()),
+        TokenMode::Normal => Mode::Normal,
+    };
+    let dictionary = load_dictionary(dictionary_type.to_embedded_path()).map_err(|e| e.to_string())?;
+    let segmenter = Segmenter::new(mode_val, dictionary, None);
+    let tokenizer = Tokenizer::new(segmenter);
+
+    let mut tokens = tokenizer.tokenize(&text).map_err(|e| e.to_string())?;
+    let result = tokens.iter_mut().map(|t| t.surface.as_ref().to_string()).collect();
+    Ok(result)
+}
+
+/// 텍스트를 형태소 분석하여 상세 정보(표형, 품사, 세부속성) 리스트로 반환합니다
+#[flutter_rust_bridge::frb(sync)]
+pub fn tokenize_text_detailed(
+    dictionary_type: DictionaryType,
+    text: String,
+    mode: TokenMode,
+) -> Result<Vec<TokenDetail>, String> {
+    let mode_val = match mode {
+        TokenMode::Decompose => Mode::Decompose(lindera::mode::Penalty::default()),
+        TokenMode::Normal => Mode::Normal,
+    };
+    let dictionary = load_dictionary(dictionary_type.to_embedded_path()).map_err(|e| e.to_string())?;
+    let segmenter = Segmenter::new(mode_val, dictionary, None);
+    let tokenizer = Tokenizer::new(segmenter);
+
+    let mut tokens = tokenizer.tokenize(&text).map_err(|e| e.to_string())?;
+    let mut details_list = Vec::new();
+    for token in tokens.iter_mut() {
+        let details_vec: Vec<String> = token.details().iter().map(|s| s.to_string()).collect();
+        let pos = details_vec.first().cloned().unwrap_or_default();
+        details_list.push(TokenDetail {
+            surface: token.surface.as_ref().to_string(),
+            pos,
+            details: details_vec,
+        });
+    }
+    Ok(details_list)
 }
 
 /// 디스크에 인덱스를 생성하거나 로드합니다
@@ -874,3 +941,45 @@ fn generate_uuid() -> String {
 
     format!("{:016x}-{:08x}", timestamp, counter)
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_tokenize_text_korean() {
+        let tokens = tokenize_text(DictionaryType::Korean, "한국어 형태소 분석".to_string(), TokenMode::Normal).unwrap();
+        assert!(!tokens.is_empty());
+        assert!(tokens.contains(&"한국어".to_string()));
+    }
+
+    #[test]
+    fn test_tokenize_text_detailed_korean() {
+        let details = tokenize_text_detailed(DictionaryType::Korean, "한국어 형태소 분석".to_string(), TokenMode::Normal).unwrap();
+        assert!(!details.is_empty());
+        let first = &details[0];
+        assert_eq!(first.surface, "한국어");
+        assert!(!first.pos.is_empty());
+    }
+
+    #[test]
+    fn test_tokenize_text_japanese() {
+        let tokens = tokenize_text(DictionaryType::JapaneseIpadic, "関西国際空港".to_string(), TokenMode::Normal).unwrap();
+        assert!(!tokens.is_empty());
+    }
+
+    #[test]
+    fn test_search_documents_flow() {
+        let init_res = initialize_search_index(DictionaryType::Korean);
+        assert!(init_res.is_ok());
+
+        let index_res = index_sample_documents();
+        assert!(index_res.is_ok());
+
+        let search_res = search_documents("나리타".to_string(), 10).unwrap();
+        assert!(!search_res.is_empty());
+        assert_eq!(search_res[0].title, "나리타 국제공항");
+    }
+}
+
+

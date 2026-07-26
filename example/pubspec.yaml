@@ -45,7 +45,7 @@ dependencies:
 
 
   cupertino_icons: ^1.0.8
-  flutter_rust_bridge: 2.11.1
+  flutter_rust_bridge: ^2.12.0
   path_provider: ^2.1.5 # 로컬 저장소 경로를 가져오기 위한 패키지
   flutter_riverpod: ^3.0.3
   riverpod_annotation: ^3.0.3

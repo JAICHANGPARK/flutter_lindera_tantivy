@@ -13,6 +13,7 @@ import '../widgets/search_result_card.dart';
 import '../widgets/theme_selector.dart';
 import '../widgets/web_platform_unsupported.dart';
 import 'benchmark_page.dart';
+import 'tokenizer_page.dart';
 import 'package:flutter_lindera_tantivy/flutter_lindera_tantivy.dart';
 class SearchPage extends ConsumerStatefulWidget {
   const SearchPage({super.key});
@@ -350,6 +351,13 @@ class _SearchPageState extends ConsumerState<SearchPage> {
                 case 'load_json':
                   _loadDocumentsFromJson();
                   break;
+                case 'tokenizer':
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => const TokenizerPage(),
+                    ),
+                  );
+                  break;
                 case 'benchmark':
                   Navigator.of(context).push(
                     MaterialPageRoute(
@@ -388,6 +396,19 @@ class _SearchPageState extends ConsumerState<SearchPage> {
                         color: Theme.of(context).colorScheme.tertiary,
                       ),
                     ),
+                  ],
+                ),
+              ),
+              PopupMenuItem(
+                value: 'tokenizer',
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.font_download_outlined,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                    const SizedBox(width: 8),
+                    const Text('형태소 분석기 테스트'),
                   ],
                 ),
               ),

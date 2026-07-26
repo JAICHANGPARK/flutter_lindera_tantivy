@@ -1,21 +1,21 @@
 [package]
 name = "flutter_lindera_tantivy"
-version = "0.1.0"
+version = "2026.7.26"
 edition = "2021"
 
 [lib]
 crate-type = ["cdylib", "staticlib"]
 
 [dependencies]
-flutter_rust_bridge = "=2.11.1"
+flutter_rust_bridge = "=2.12.0"
 tantivy = "0.25.0"
-lindera = "1.4.1"
-lindera-tantivy = { version = "1.1.1", features = [
-    "embedded-ipadic",
-    #    "embedded-ipadic-neologd",
-    "embedded-unidic",
-    "embedded-ko-dic",
-    "embedded-cc-cedict"
+lindera = "4.0.1"
+lindera-tantivy = { version = "4.0.0", features = [
+    "embed-ipadic",
+    #    "embed-ipadic-neologd",
+    "embed-unidic",
+    "embed-ko-dic",
+    "embed-cc-cedict"
 ] }
 serde_json = "1.0"
 
