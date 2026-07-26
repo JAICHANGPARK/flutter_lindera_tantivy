@@ -1,6 +1,6 @@
 name: flutter_lindera_tantivy
 description: "High-performance full-text search Flutter plugin using Tantivy engine with Lindera morphological analysis for Korean, Japanese, and Chinese languages."
-version: 0.2.0
+version: 2026.7.26
 homepage: https://github.com/JAICHANGPARK/flutter_lindera_tantivy
 
 environment:
