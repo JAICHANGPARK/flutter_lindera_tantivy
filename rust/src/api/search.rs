@@ -954,6 +954,12 @@ mod tests {
     }
 
     #[test]
+    fn test_tokenize_text_korean_decompose() {
+        let tokens = tokenize_text(DictionaryType::Korean, "한국어 형태소 분석".to_string(), TokenMode::Decompose).unwrap();
+        assert!(!tokens.is_empty());
+    }
+
+    #[test]
     fn test_tokenize_text_detailed_korean() {
         let details = tokenize_text_detailed(DictionaryType::Korean, "한국어 형태소 분석".to_string(), TokenMode::Normal).unwrap();
         assert!(!details.is_empty());
@@ -963,22 +969,111 @@ mod tests {
     }
 
     #[test]
-    fn test_tokenize_text_japanese() {
+    fn test_tokenize_text_japanese_ipadic() {
         let tokens = tokenize_text(DictionaryType::JapaneseIpadic, "関西国際空港".to_string(), TokenMode::Normal).unwrap();
         assert!(!tokens.is_empty());
     }
 
     #[test]
-    fn test_search_documents_flow() {
+    fn test_tokenize_text_japanese_unidic() {
+        let tokens = tokenize_text(DictionaryType::JapaneseUnidic, "関西国際空港".to_string(), TokenMode::Normal).unwrap();
+        assert!(!tokens.is_empty());
+    }
+
+    #[test]
+    fn test_tokenize_text_chinese() {
+        let tokens = tokenize_text(DictionaryType::Chinese, "北京首都国际机场".to_string(), TokenMode::Normal).unwrap();
+        assert!(!tokens.is_empty());
+    }
+
+    #[test]
+    fn test_initialize_search_index_with_path() {
+        let temp_dir = std::env::temp_dir().join("test_tantivy_index_dir");
+        let path_str = temp_dir.to_str().unwrap().to_string();
+
+        let init_res = initialize_search_index_with_path(DictionaryType::Korean, path_str.clone());
+        assert!(init_res.is_ok());
+
+        // Cleanup
+        let _ = std::fs::remove_dir_all(temp_dir);
+    }
+
+    #[test]
+    fn test_full_document_crud_flow() {
+        // 1. Initialize RAM index
         let init_res = initialize_search_index(DictionaryType::Korean);
         assert!(init_res.is_ok());
 
-        let index_res = index_sample_documents();
-        assert!(index_res.is_ok());
+        // 2. Clear all documents initially
+        let _ = clear_all_documents();
+        assert_eq!(get_document_count().unwrap(), 0);
 
-        let search_res = search_documents("나리타".to_string(), 10).unwrap();
-        assert!(!search_res.is_empty());
-        assert_eq!(search_res[0].title, "나리타 국제공항");
+        // 3. Add single document
+        let add_res = add_document(
+            "테스트 제목".to_string(),
+            "테스트 본문 내용입니다.".to_string(),
+            r#"{"category":"test"}"#.to_string(),
+        );
+        assert!(add_res.is_ok());
+        assert_eq!(get_document_count().unwrap(), 1);
+
+        // 4. Search added document
+        let search_res = search_documents("테스트".to_string(), 10).unwrap();
+        assert_eq!(search_res.len(), 1);
+        let doc_id = search_res[0].id.clone();
+        assert_eq!(search_res[0].title, "테스트 제목");
+
+        // 5. Update document
+        let update_res = update_document(
+            doc_id.clone(),
+            "수정된 제목".to_string(),
+            "수정된 본문 내용입니다.".to_string(),
+            r#"{"category":"updated"}"#.to_string(),
+        );
+        assert!(update_res.is_ok());
+        assert_eq!(get_document_count().unwrap(), 1);
+
+        let search_after_update = search_documents("수정된".to_string(), 10).unwrap();
+        assert_eq!(search_after_update.len(), 1);
+        assert_eq!(search_after_update[0].title, "수정된 제목");
+
+        // 6. Add batch documents
+        let batch_input = vec![
+            DocumentInput {
+                id: "batch-id-1".to_string(),
+                title: "일괄 문서 1".to_string(),
+                body: "일괄 문서 내용 1".to_string(),
+                metadata: "{}".to_string(),
+            },
+            DocumentInput {
+                id: "batch-id-2".to_string(),
+                title: "일괄 문서 2".to_string(),
+                body: "일괄 문서 내용 2".to_string(),
+                metadata: "{}".to_string(),
+            },
+        ];
+        let batch_res = add_documents(batch_input);
+        assert!(batch_res.is_ok());
+        assert_eq!(get_document_count().unwrap(), 3);
+
+        // 7. Delete single document
+        let del_res = delete_document(doc_id);
+        assert!(del_res.is_ok());
+        assert_eq!(get_document_count().unwrap(), 2);
+
+        // 8. Delete batch documents by explicit IDs
+        let del_batch_res = delete_documents(vec!["batch-id-1".to_string(), "batch-id-2".to_string()]);
+        assert!(del_batch_res.is_ok());
+        assert_eq!(get_document_count().unwrap(), 0);
+
+        // 9. Index sample documents & clear all
+        let sample_res = index_sample_documents();
+        assert!(sample_res.is_ok());
+        assert!(get_document_count().unwrap() > 0);
+
+        let clear_res = clear_all_documents();
+        assert!(clear_res.is_ok());
+        assert_eq!(get_document_count().unwrap(), 0);
     }
 }
 

@@ -689,7 +689,7 @@ dependencies = [
 
 [[package]]
 name = "flutter_lindera_tantivy"
-version = "0.1.0"
+version = "2026.7.26"
 dependencies = [
  "flutter_rust_bridge",
  "lindera",
