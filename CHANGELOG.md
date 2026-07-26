@@ -1,4 +1,4 @@
-## [2026.7.26] - 2026-07-26
+## [0.2.0] - 2026-07-26
 
 ### Added
 - New standalone Morphological Analysis APIs: `tokenizeText` and `tokenizeTextDetailed`.
